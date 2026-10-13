@@ -29,13 +29,13 @@ export function Why() {
   const [active, setActive] = useState(0);
   const s = scenarios[active];
   return (
-    <section id="why" className={`${wrap} grid gap-12 py-24 lg:grid-cols-2 lg:items-center lg:gap-16 lg:py-32`}>
+    <section id="why" className={`${wrap} grid gap-12 py-16 lg:grid-cols-2 lg:items-center lg:gap-16 lg:py-24`}>
       <Head eyebrow="Why Reddit" title="Your buyers are already having the conversation.">
         They ask Reddit what to buy, what to avoid, and what actually works.
       </Head>
       <Reveal delay={0.08} className="min-w-0">
         <article className="rounded-3xl border border-line bg-white p-5 sm:p-7">
-          <h3 className="font-display text-2xl font-bold leading-tight tracking-tight">It starts with a question.</h3>
+          <h3 className="font-display text-xl font-bold leading-tight tracking-tight">It starts with a question.</h3>
           <p className="mt-2 text-sm leading-relaxed text-muted">Real buyers ask Reddit before they decide.</p>
           <div className="mt-5 flex items-center gap-2 rounded-full border border-ink/15 bg-paper px-4 py-3 text-sm shadow-sm">
             <Search aria-hidden className="size-4 shrink-0 text-accent" />
@@ -48,7 +48,7 @@ export function Why() {
                   type="button"
                   aria-pressed={i === active}
                   onClick={() => setActive(i)}
-                  className={`flex w-full items-center gap-2.5 rounded-xl px-3 py-2 text-left text-sm transition-colors duration-200 ${
+                  className={`flex w-full items-center gap-2.5 min-h-11 rounded-xl px-3 py-2 text-left text-sm transition-colors duration-200 ${
                     i === active ? "bg-accent/10 font-medium ring-1 ring-accent/40" : "text-muted hover:bg-paper hover:text-ink"
                   }`}
                 >

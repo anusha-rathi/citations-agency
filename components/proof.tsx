@@ -8,7 +8,7 @@ import { Head, Reveal } from "./ui";
 export function ProofOfWork() {
   if (!proofs.length) return null;
   return (
-    <section id="proof" className={`${wrap} py-24 lg:py-32`}>
+    <section id="proof" className={`${wrap} py-16 lg:py-24`}>
       <Head eyebrow="Proof" title="What the work looks like." />
       <ul className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         {proofs.slice(0, 3).map((p, i) => (

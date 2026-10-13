@@ -1,4 +1,4 @@
-import { growth } from "@/lib/content";
+import { plans } from "@/lib/content";
 import { wrap } from "@/lib/styles";
 import { ContactForm } from "./contact";
 import { Cta, Head, Reveal } from "./ui";
@@ -6,47 +6,67 @@ import { Cta, Head, Reveal } from "./ui";
 /* ── Pricing ────────────────────────────────────────────────────────── */
 
 export function Pricing() {
-  const p = growth;
   return (
-    <section id="pricing" className={`${wrap} py-24 lg:py-32`}>
-      <Head eyebrow="Pricing" title="Simple pricing. No guesswork." />
-      <Reveal className="mt-14">
-        <article className="grid gap-10 rounded-[2rem] border border-line bg-white p-8 sm:p-10 lg:grid-cols-[1fr_1.3fr] lg:gap-14">
-          <div className="flex flex-col">
-            <p className="font-mono text-xs uppercase tracking-widest text-muted">{p.eyebrow}</p>
-            <h3 className="mt-4 font-display text-3xl font-bold tracking-tight">{p.name}</h3>
-            <p className="mt-6 flex flex-wrap items-baseline gap-x-2.5">
-              <span className="text-sm text-muted">Starting at</span>
-              <span className="font-display text-6xl font-bold tracking-[-0.04em] text-accent sm:text-7xl">{p.price}</span>
-              <span className="text-sm text-muted">/ month</span>
-            </p>
-            <p className="mb-8 mt-5 max-w-md leading-relaxed text-muted">{p.blurb}</p>
-            <Cta href="#contact" className="mt-auto w-full sm:w-fit">
-              {p.cta}
-            </Cta>
-          </div>
-          <div>
-            <div className="grid gap-6 sm:grid-cols-3">
-              {p.groups.map((g) => (
-                <div key={g.label} className="border-t border-line pt-4">
-                  <p className="font-mono text-[11px] uppercase tracking-widest text-muted">{g.label}</p>
-                  <ul className="mt-3 space-y-2 text-sm leading-snug">
-                    {g.items.map((it) => (
-                      <li key={it}>{it}</li>
-                    ))}
-                  </ul>
+    <section id="pricing" className="border-y border-line bg-white/50">
+      <div className={`${wrap} py-16 lg:py-24`}>
+        <Head
+          eyebrow="Pricing"
+          title={
+            <>
+              Two ways to grow.
+              <br />
+              Neither involves guesswork.
+            </>
+          }
+        >
+          Start with a consistent Reddit presence or build a more ambitious program around your goals.
+        </Head>
+        <div className="mt-10 grid gap-5 lg:grid-cols-2">
+          {plans.map((p, i) => (
+            <Reveal key={p.name} delay={i * 0.08}>
+              <article className={`flex h-full flex-col rounded-3xl border p-6 sm:p-8 ${p.dark ? "border-ink bg-ink text-paper" : "border-line bg-white"}`}>
+                <p className={`font-mono text-xs uppercase tracking-widest ${p.dark ? "text-accent" : "text-muted"}`}>{p.eyebrow}</p>
+                <h3 className="mt-3 font-display text-2xl font-bold tracking-tight">{p.name}</h3>
+                <p className="mt-6 flex flex-wrap items-baseline gap-x-2.5">
+                  {p.priceNote && <span className="text-sm opacity-70">{p.priceNote[0]}</span>}
+                  <span className={`font-display text-5xl font-bold tracking-[-0.04em] ${p.dark ? "" : "text-accent"}`}>{p.price}</span>
+                  {p.priceNote && <span className="text-sm opacity-70">{p.priceNote[1]}</span>}
+                </p>
+                <p className="mt-5 max-w-md leading-relaxed opacity-70">{p.blurb}</p>
+                <div className={`my-8 grid gap-6 border-t pt-8 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3 ${p.dark ? "border-paper/15" : "border-line"}`}>
+                  {p.groups.map((g) => (
+                    <div key={g.label}>
+                      <p className="font-mono text-[11px] uppercase tracking-widest opacity-60">{g.label}</p>
+                      <ul className="mt-3 space-y-2 text-sm leading-snug">
+                        {g.items.map((it) => (
+                          <li key={it}>{it}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-            <p className="mt-8 rounded-2xl bg-paper p-4 text-xs leading-relaxed text-muted">{p.note}</p>
-          </div>
-        </article>
-        <p className="mt-10 font-display text-xl font-semibold tracking-tight">Need a different scope? We’ll build it around your brand.</p>
-        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
+                {p.note && <p className="mb-8 rounded-2xl bg-paper p-4 text-xs leading-relaxed text-muted">{p.note}</p>}
+                <div className="mt-auto">
+                  <Cta href="#contact" className={`w-full sm:w-auto ${p.dark ? "hover:!bg-paper hover:!text-ink" : ""}`}>
+                    {p.cta}
+                  </Cta>
+                  <p className="mt-5 text-sm opacity-60">{p.footer}</p>
+                </div>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+        <p className="mx-auto mt-10 max-w-2xl text-center font-display text-lg font-semibold leading-snug tracking-tight">
+          Not sure where to start? We’ll help you figure out what Reddit can realistically do for your brand.{" "}
+          <a href="#contact" className="whitespace-nowrap underline decoration-accent decoration-2 underline-offset-4 transition-colors hover:text-accent">
+            Talk to us
+          </a>
+        </p>
+        <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed text-muted">
           We don’t guarantee engagement, rankings, sales or AI citations. Community moderators and third-party platforms
           decide what appears.
         </p>
-      </Reveal>
+      </div>
     </section>
   );
 }
@@ -58,13 +78,13 @@ export async function Closing() {
   return (
     <div className="px-2 pb-2 sm:px-4 sm:pb-4">
       <div className="rounded-[2rem] bg-ink text-paper">
-        <section id="contact" className={`${wrap} grid gap-12 py-20 lg:grid-cols-[1.25fr_1fr] lg:items-center lg:gap-20 lg:py-28`}>
+        <section id="contact" className={`${wrap} grid gap-12 py-16 lg:grid-cols-[1.25fr_1fr] lg:items-center lg:gap-20 lg:py-20`}>
           <Reveal>
             <p className="font-mono text-xs uppercase tracking-widest text-paper/60">Free Reddit audit</p>
-            <h2 className="mt-5 font-display text-[clamp(2rem,4.2vw,3.5rem)] font-bold leading-[1.05] tracking-[-0.035em]">
+            <h2 className="mt-5 font-display text-[clamp(1.75rem,3.2vw,2.75rem)] font-bold leading-[1.05] tracking-[-0.035em]">
               Reddit already has an opinion. <span className="text-accent">Let’s make sure your brand shows up.</span>
             </h2>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-paper/70">
+            <p className="mt-5 max-w-xl leading-relaxed text-paper/70">
               Find out where your buyers are talking, where your competitors are winning attention, and what
               opportunities you’re missing.
             </p>

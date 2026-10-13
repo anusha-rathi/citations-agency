@@ -47,8 +47,8 @@ export function Head({ eyebrow, title, children, dark }: { eyebrow: string; titl
   return (
     <Reveal className="max-w-4xl">
       <p className={`font-mono text-xs uppercase tracking-widest ${dark ? "text-paper/60" : "text-muted"}`}>{eyebrow}</p>
-      <h2 className={`mt-5 ${h2}`}>{title}</h2>
-      {children && <p className={`mt-6 max-w-2xl text-lg leading-relaxed ${dark ? "text-paper/70" : "text-muted"}`}>{children}</p>}
+      <h2 className={`mt-4 ${h2}`}>{title}</h2>
+      {children && <p className={`mt-4 max-w-2xl leading-relaxed sm:text-lg ${dark ? "text-paper/70" : "text-muted"}`}>{children}</p>}
     </Reveal>
   );
 }
@@ -65,7 +65,7 @@ export function Tabs<T extends string>({
           role="tab"
           aria-selected={it === value}
           onClick={() => onChange(it)}
-          className={`rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors duration-200 ${
+          className={`min-h-11 rounded-full border px-4 text-sm font-medium sm:min-h-9 transition-colors duration-200 ${
             it === value
               ? dark ? "border-accent bg-accent text-ink" : "border-ink bg-ink text-paper"
               : dark ? "border-paper/20 hover:border-paper/60" : "border-ink/15 hover:border-ink"

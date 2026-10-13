@@ -1,6 +1,7 @@
 import { Advantage } from "@/components/advantage";
 import { Hero } from "@/components/hero";
 import { Nav } from "@/components/nav";
+import { Process } from "@/components/process";
 import { ProofOfWork } from "@/components/proof";
 import { Closing, Pricing } from "@/components/sections";
 import { Why } from "@/components/why";
@@ -29,6 +30,7 @@ export default function Home() {
         <Hero />
         <Why />
         <Advantage />
+        <Process />
         <ProofOfWork />
         <Pricing />
       </main>

@@ -13,13 +13,13 @@ const rise = (delay: number) => ({
 export function Hero() {
   return (
     <section id="top" className="overflow-x-clip">
-      <div className="mx-auto max-w-7xl px-5 pb-20 pt-12 sm:px-8 sm:pt-20 lg:pb-28">
+      <div className="mx-auto max-w-7xl px-5 pb-16 pt-10 sm:px-8 sm:pt-16 lg:pb-20">
         <motion.p {...rise(0)} className="font-mono text-xs uppercase tracking-widest text-muted">
           The Reddit Marketing & AI Visibility Agency
         </motion.p>
         <motion.h1
           {...rise(0.08)}
-          className="mt-6 font-display text-[clamp(2.6rem,6.6vw,6rem)] font-bold leading-[0.95] tracking-[-0.04em]"
+          className="mt-6 font-display text-[clamp(2.25rem,5vw,4.25rem)] font-bold leading-[1] tracking-[-0.035em]"
         >
           Get talked about on{" "}
           <span className="text-accent">Reddit</span>
@@ -32,8 +32,8 @@ export function Hero() {
           .
         </motion.h1>
 
-        <motion.div {...rise(0.16)} className="mt-10 grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
-          <p className="max-w-xl text-lg leading-relaxed text-muted sm:text-xl">
+        <motion.div {...rise(0.16)} className="mt-8 grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
+          <p className="max-w-xl leading-relaxed text-muted sm:text-lg">
             We help brands turn real Reddit conversations into awareness, demand, and stronger visibility across
             ChatGPT, Perplexity, Google, and beyond.
           </p>
@@ -49,7 +49,7 @@ export function Hero() {
         </motion.p>
 
         {/* Reddit thread → AI answer */}
-        <figure className="mt-16 lg:mt-24">
+        <figure className="mt-12 lg:mt-16">
           <div className="grid grid-cols-1 items-center gap-4 lg:grid-cols-[minmax(0,1fr)_19rem_minmax(0,1fr)] lg:gap-0">
             <motion.div
               initial={{ opacity: 0, x: -40, rotate: -4 }}
