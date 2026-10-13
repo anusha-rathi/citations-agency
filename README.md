@@ -11,17 +11,17 @@ npm run build
 
 | What | File |
 | --- | --- |
-| Nav, services, pricing, FAQ copy | `lib/content.ts` |
-| "Why Reddit" demo scenarios (5) | `lib/scenarios.ts` |
-| Proof of Work gallery entries | `lib/proof.ts` |
+| Nav and pricing copy | `lib/content.ts` |
+| Example buyer searches | `lib/scenarios.ts` |
+| Proof entries | `lib/proof.ts` |
 | Section components | `components/` |
 
-## Proof of Work
+## Proof
 
-Entries in `lib/proof.ts` without an `image` render as slots labelled "Placeholder".
-To publish real evidence, add the screenshot to `public/proof/` and fill in `image`,
-`category`, `title`, `context`, and where available `url`, `metrics`, `notes`.
-Only add metrics that can be verified.
+The "What the work looks like" section and its nav link are unpublished while
+`proofs` in `lib/proof.ts` is empty. To publish, add up to three real examples:
+put each screenshot in `public/proof/` and fill in `category`, `title`, `context`,
+`image`, and where available `url` and `metrics`. Only add metrics that can be verified.
 
 ## Contact form
 

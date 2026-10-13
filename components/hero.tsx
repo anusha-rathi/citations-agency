@@ -1,6 +1,5 @@
 "use client";
 
-import { ArrowBigUp } from "lucide-react";
 import { motion } from "motion/react";
 import { AIAnswer, Brand, Cite, Comment, Illustrative, RedditPost, Skeleton } from "./mocks";
 import { Cta, ease } from "./ui";
@@ -23,16 +22,7 @@ export function Hero() {
           className="mt-6 font-display text-[clamp(2.6rem,6.6vw,6rem)] font-bold leading-[0.95] tracking-[-0.04em]"
         >
           Get talked about on{" "}
-          <span className="relative whitespace-nowrap text-accent">
-            Reddit
-            <span
-              aria-hidden
-              className="absolute -top-3 left-[calc(100%-0.25rem)] hidden rotate-6 items-center gap-0.5 rounded-full bg-ink px-2.5 py-1 font-sans text-xs font-semibold tracking-normal text-paper sm:flex lg:text-sm"
-            >
-              <ArrowBigUp className="size-4 fill-accent text-accent" />
-              2.4k
-            </span>
-          </span>
+          <span className="text-accent">Reddit</span>
           .
           <br />
           Get discovered by{" "}
@@ -49,7 +39,7 @@ export function Hero() {
           </p>
           <div className="flex flex-col gap-3 sm:flex-row">
             <Cta href="#contact">Get Your Free Visibility Audit</Cta>
-            <Cta href="#services" variant="outline" down>
+            <Cta href="#advantage" variant="outline" down>
               Explore What We Do
             </Cta>
           </div>
@@ -73,18 +63,16 @@ export function Hero() {
                 time="6h"
                 title="What’s the best tool for keeping customer feedback organized across a small team?"
                 body="We’re 8 people. Feedback lives in Slack, email, and a spreadsheet nobody opens. What actually worked for you?"
-                votes="214"
-                comments="87 comments"
               >
-                <Comment user="opsnerd_" time="5h" votes="96">
+                <Comment user="opsnerd_" time="5h">
                   We did the spreadsheet thing for a year. The fix wasn’t a fancier tool, it was one inbox everyone
                   actually checks.
                 </Comment>
-                <Comment user="maya_tallybird" time="4h" votes="61" badge="Disclosure: works at Tallybird" highlight>
+                <Comment user="maya_tallybird" time="4h" badge="Disclosure: works at Tallybird" highlight>
                   Biased, obviously: I work at <Brand />. Happy to share the tagging setup we see small teams stick
                   with, whichever tool you pick.
                 </Comment>
-                <Comment user="quietchurn" time="3h" votes="38">
+                <Comment user="quietchurn" time="3h">
                   That tagging advice is solid. We trialed three options and the Slack sync is what decided it for us.
                 </Comment>
               </RedditPost>

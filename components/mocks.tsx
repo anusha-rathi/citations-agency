@@ -31,7 +31,7 @@ export function RedditPost({
   sub, user, time, title, body, votes, comments, children, className = "",
 }: {
   sub: string; user: string; time: string; title: string; body?: string;
-  votes: string; comments: string; children?: ReactNode; className?: string;
+  votes?: string; comments?: string; children?: ReactNode; className?: string;
 }) {
   return (
     <article className={`${card} ${className}`}>
@@ -45,11 +45,11 @@ export function RedditPost({
       <div className="mt-3 flex gap-2 text-xs font-medium">
         <span className="flex items-center gap-1 rounded-full bg-paper px-2.5 py-1">
           <ArrowBigUp aria-hidden className="size-4 text-accent" />
-          {votes}
+          {votes ?? "Vote"}
         </span>
         <span className="flex items-center gap-1.5 rounded-full bg-paper px-2.5 py-1">
           <MessageSquare aria-hidden className="size-3.5" />
-          {comments}
+          {comments ?? "Comments"}
         </span>
       </div>
       {children && <div className="mt-3 space-y-1 border-t border-line pt-3">{children}</div>}
@@ -59,7 +59,7 @@ export function RedditPost({
 
 export function Comment({
   user, time, votes, badge, highlight, children,
-}: { user: string; time: string; votes: string; badge?: string; highlight?: boolean; children: ReactNode }) {
+}: { user: string; time: string; votes?: string; badge?: string; highlight?: boolean; children: ReactNode }) {
   return (
     <div className={`flex gap-2.5 rounded-xl p-2.5 ${highlight ? "bg-accent/[0.07] ring-1 ring-accent/30" : ""}`}>
       <span aria-hidden className="mt-0.5 grid size-6 shrink-0 place-items-center rounded-full bg-ink/10 text-[10px] font-bold uppercase">
@@ -71,10 +71,12 @@ export function Comment({
           {badge && <span className="rounded-full bg-ink px-2 py-0.5 text-[10px] font-medium text-paper">{badge}</span>}
         </p>
         <p className="mt-1 leading-relaxed">{children}</p>
-        <p className="mt-1.5 flex items-center gap-1 text-xs text-muted">
-          <ArrowBigUp aria-hidden className="size-3.5" />
-          {votes}
-        </p>
+        {votes && (
+          <p className="mt-1.5 flex items-center gap-1 text-xs text-muted">
+            <ArrowBigUp aria-hidden className="size-3.5" />
+            {votes}
+          </p>
+        )}
       </div>
     </div>
   );
