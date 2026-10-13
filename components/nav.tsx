@@ -22,7 +22,7 @@ export function Nav() {
         <a href="#top" className="font-display text-lg font-bold tracking-tight">
           citations<span className="text-accent">.agency</span>
         </a>
-        <nav aria-label="Primary" className="hidden items-center gap-8 text-sm font-medium lg:flex">
+        <nav aria-label="Primary" className="hidden items-center gap-6 text-sm font-medium lg:flex">
           {nav.map((n) => (
             <a key={n.href} href={n.href} className="text-ink/70 transition-colors hover:text-ink">
               {n.label}

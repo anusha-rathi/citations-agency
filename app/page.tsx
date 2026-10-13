@@ -1,6 +1,10 @@
+import { Advantage } from "@/components/advantage";
 import { Hero } from "@/components/hero";
 import { Nav } from "@/components/nav";
-import { Closing, Faq, Manifesto, Pricing, Process, Services, Story, Why } from "@/components/sections";
+import { Process } from "@/components/process";
+import { ProofOfWork } from "@/components/proof";
+import { Closing, Faq, Pricing, Services } from "@/components/sections";
+import { Why } from "@/components/why";
 import { Motion } from "@/components/ui";
 import { faqs } from "@/lib/content";
 
@@ -31,8 +35,8 @@ export default function Home() {
         <Hero />
         <Why />
         <Services />
-        <Story />
-        <Manifesto />
+        <ProofOfWork />
+        <Advantage />
         <Process />
         <Pricing />
         <Faq />

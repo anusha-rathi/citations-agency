@@ -1,8 +1,9 @@
 "use client";
 
 import { ArrowDown, ArrowUpRight } from "lucide-react";
-import { MotionConfig, motion } from "motion/react";
+import { AnimatePresence, MotionConfig, motion } from "motion/react";
 import type { ReactNode } from "react";
+import { h2 } from "@/lib/styles";
 
 export const ease = [0.21, 0.6, 0.35, 1] as const;
 
@@ -21,6 +22,59 @@ export function Reveal({ children, delay = 0, className }: { children: ReactNode
     >
       {children}
     </motion.div>
+  );
+}
+
+/** Cross-fades its children whenever `k` changes. */
+export function Swap({ k, children, className }: { k: string | number; children: ReactNode; className?: string }) {
+  return (
+    <AnimatePresence mode="wait" initial={false}>
+      <motion.div
+        key={k}
+        className={className}
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -6 }}
+        transition={{ duration: 0.22 }}
+      >
+        {children}
+      </motion.div>
+    </AnimatePresence>
+  );
+}
+
+export function Head({ eyebrow, title, children, dark }: { eyebrow: string; title: ReactNode; children?: ReactNode; dark?: boolean }) {
+  return (
+    <Reveal className="max-w-4xl">
+      <p className={`font-mono text-xs uppercase tracking-widest ${dark ? "text-paper/60" : "text-muted"}`}>{eyebrow}</p>
+      <h2 className={`mt-5 ${h2}`}>{title}</h2>
+      {children && <p className={`mt-6 max-w-2xl text-lg leading-relaxed ${dark ? "text-paper/70" : "text-muted"}`}>{children}</p>}
+    </Reveal>
+  );
+}
+
+export function Tabs<T extends string>({
+  label, items, value, onChange, dark,
+}: { label: string; items: readonly T[]; value: T; onChange: (v: T) => void; dark?: boolean }) {
+  return (
+    <div role="tablist" aria-label={label} className="flex flex-wrap gap-1.5">
+      {items.map((it) => (
+        <button
+          key={it}
+          type="button"
+          role="tab"
+          aria-selected={it === value}
+          onClick={() => onChange(it)}
+          className={`rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors duration-200 ${
+            it === value
+              ? dark ? "border-accent bg-accent text-ink" : "border-ink bg-ink text-paper"
+              : dark ? "border-paper/20 hover:border-paper/60" : "border-ink/15 hover:border-ink"
+          }`}
+        >
+          {it}
+        </button>
+      ))}
+    </div>
   );
 }
 

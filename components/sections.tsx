@@ -1,159 +1,109 @@
-import { ArrowBigUp, Check, Plus, Search, Sparkles } from "lucide-react";
+import { ArrowBigUp, MessageSquare, Plus, Search } from "lucide-react";
 import type { ReactNode } from "react";
-import { aiServices, faqs, plans, process, reasons, redditServices } from "@/lib/content";
+import { faqs, plans, services } from "@/lib/content";
 import { ContactForm } from "./contact";
-import { Cite, Illustrative } from "./mocks";
-import { StoryStages } from "./story";
-import { Cta, Reveal } from "./ui";
+import { wrap } from "@/lib/styles";
+import { Cta, Head, Reveal } from "./ui";
 
-const wrap = "mx-auto max-w-7xl px-5 sm:px-8";
-const h2 = "font-display text-[clamp(2.1rem,5.2vw,4.25rem)] font-bold leading-[1.02] tracking-[-0.035em]";
+/* ── Services ───────────────────────────────────────────────────────── */
 
-function Head({ eyebrow, title, children, dark }: { eyebrow: string; title: ReactNode; children?: ReactNode; dark?: boolean }) {
-  return (
-    <Reveal className="max-w-4xl">
-      <p className={`font-mono text-xs uppercase tracking-widest ${dark ? "text-paper/60" : "text-muted"}`}>{eyebrow}</p>
-      <h2 className={`mt-5 ${h2}`}>{title}</h2>
-      {children && <p className={`mt-6 max-w-2xl text-lg leading-relaxed ${dark ? "text-paper/70" : "text-muted"}`}>{children}</p>}
-    </Reveal>
-  );
-}
+const bar = (w: string, cls = "bg-current opacity-15") => <span aria-hidden className={`block h-1.5 rounded-full ${cls}`} style={{ width: w }} />;
 
-/* ── 2. Why Reddit + Why AI ─────────────────────────────────────────── */
-
-const whyCards = [
+// One miniature interface per service, in the same order as `services`.
+const serviceVisuals: { tone: string; visual: ReactNode }[] = [
   {
-    label: "01 / Discovery",
-    title: "Your buyers are searching Reddit.",
+    tone: "bg-white",
     visual: (
-      <div className="space-y-2 text-sm">
-        <p className="flex items-center gap-2 rounded-full border border-line bg-white px-4 py-2.5 shadow-sm">
-          <Search aria-hidden className="size-4 shrink-0 text-accent" />
-          best CRM for startups reddit
-          <span aria-hidden className="-ml-1.5 h-4 w-px animate-[blink_1s_steps(1)_infinite] bg-ink" />
-        </p>
-        {["is [brand] worth it?", "[brand] vs [competitor] reddit", "best invoicing tool for freelancers"].map((q) => (
-          <p key={q} className="flex items-center gap-2 px-4 py-1 text-muted">
-            <Search aria-hidden className="size-3.5 shrink-0" />
-            {q}
-          </p>
+      <div className="flex flex-wrap content-center gap-1.5">
+        {["r/startups", "r/SaaS", "r/smallbusiness", "r/Entrepreneur", "r/marketing", "r/sales"].map((s, i) => (
+          <span
+            key={s}
+            className={`rounded-full px-2.5 py-1 text-xs font-medium transition-all duration-300 ${
+              i === 1 || i === 2 ? "bg-accent text-ink group-hover:scale-105" : "border border-line group-hover:opacity-40"
+            }`}
+          >
+            {s}
+          </span>
         ))}
       </div>
     ),
   },
   {
-    label: "02 / Trust",
-    title: "People trust useful conversations.",
+    tone: "bg-accent/[0.08]",
     visual: (
-      <div className="space-y-2 text-sm">
-        <p className="w-fit max-w-[90%] rounded-2xl rounded-bl-sm border border-line bg-white px-3.5 py-2.5 shadow-sm">
-          Has anyone actually used this with a team of ten?
+      <div className="w-full rounded-xl bg-white p-3 shadow-sm transition-transform duration-300 group-hover:-rotate-1 group-hover:scale-[1.03]">
+        <span className="rounded-full bg-ink px-2 py-0.5 text-[10px] font-medium text-paper">Native post</span>
+        <div className="mt-2.5 space-y-1.5">
+          {bar("85%", "bg-ink/70 !h-2")}
+          {bar("95%")}
+          {bar("70%")}
+        </div>
+        <p className="mt-2.5 flex gap-3 text-ink/50">
+          <ArrowBigUp aria-hidden className="size-4 text-accent" />
+          <MessageSquare aria-hidden className="size-3.5" />
         </p>
-        <div className="ml-6 rounded-2xl rounded-tl-sm border border-line bg-white px-3.5 py-2.5 shadow-sm">
-          <p>Two years in. Here’s what I’d check before you buy…</p>
-          <p className="mt-2 flex items-center gap-3 text-xs text-muted">
-            <span className="flex items-center gap-0.5 font-semibold text-ink">
-              <ArrowBigUp aria-hidden className="size-4 fill-accent text-accent" />
-              128
-            </span>
-            <span className="rounded-full bg-accent/10 px-2 py-0.5 font-medium text-ink">Helpful</span>
-            12 replies
-          </p>
+      </div>
+    ),
+  },
+  {
+    tone: "bg-ink text-paper border-ink",
+    visual: (
+      <div className="w-full space-y-2">
+        <div className="space-y-1.5 rounded-lg bg-paper/10 p-2.5">{bar("80%")}{bar("50%")}</div>
+        <div className="ml-5 space-y-1.5 rounded-lg bg-paper/10 p-2.5">{bar("65%")}</div>
+        <div className="ml-10 space-y-1.5 rounded-lg bg-accent p-2.5 text-ink transition-transform duration-300 group-hover:translate-x-1.5">
+          {bar("75%", "bg-ink/50")}
+          {bar("45%", "bg-ink/50")}
         </div>
       </div>
     ),
   },
   {
-    label: "03 / AI Visibility",
-    title: "Those conversations can travel further.",
+    tone: "bg-white",
     visual: (
-      <div className="rounded-2xl border border-line bg-white p-3.5 text-sm shadow-sm">
-        <p className="flex items-center gap-1.5 text-xs font-semibold">
-          <Sparkles aria-hidden className="size-3.5 text-violet" />
-          AI answer
+      <ul className="w-full space-y-2 text-xs">
+        {[["Needs a reply", "bg-accent"], ["Corrected with a source", "bg-violet"], ["Monitoring", "bg-ink/30"]].map(([label, dot], i) => (
+          <li key={label} className="flex items-center gap-2.5 rounded-lg border border-line px-2.5 py-2 transition-transform duration-300 group-hover:translate-x-1" style={{ transitionDelay: `${i * 50}ms` }}>
+            <span aria-hidden className={`size-2 shrink-0 rounded-full ${dot}`} />
+            <span className="flex-1">{bar(["70%", "55%", "80%"][i])}</span>
+            <span className="font-medium">{label}</span>
+          </li>
+        ))}
+      </ul>
+    ),
+  },
+  {
+    tone: "bg-lav/50",
+    visual: (
+      <div className="w-full rounded-xl bg-white p-3 shadow-sm">
+        <p className="text-[10px] font-semibold uppercase tracking-wider text-violet">Promoted</p>
+        <div className="mt-2 space-y-1.5">{bar("90%", "bg-ink/70 !h-2")}{bar("60%")}</div>
+        <span className="mt-3 inline-block rounded-full bg-ink px-3 py-1 text-[11px] font-semibold text-paper transition-colors duration-300 group-hover:bg-accent group-hover:text-ink">
+          Learn more
+        </span>
+      </div>
+    ),
+  },
+  {
+    tone: "bg-white",
+    visual: (
+      <div className="w-full text-xs">
+        <p className="flex items-center gap-2 rounded-full border border-line px-3 py-1.5">
+          <Search aria-hidden className="size-3.5 text-accent" />
+          best [category] tool reddit
         </p>
-        <p className="mt-2 leading-relaxed">
-          Teams in public discussions often compare options by onboarding time and support quality.
-          <Cite />
-        </p>
-        <p className="mt-3 flex items-center gap-2 rounded-lg bg-lav/50 px-2.5 py-1.5 text-xs">
-          <span className="grid size-4 place-items-center rounded bg-violet text-[10px] font-bold text-white">1</span>
-          reddit.com · public discussion
-        </p>
+        <ul className="mt-2 space-y-1.5">
+          {[0, 1].map((i) => (
+            <li key={i} className={`rounded-lg px-3 py-2 transition-colors duration-300 ${i === 0 ? "bg-paper group-hover:bg-accent/15" : ""}`}>
+              <span className="text-muted">{i === 0 ? "reddit.com › r/…" : "example.com"}</span>
+              <span className="mt-1.5 block">{bar(i === 0 ? "80%" : "60%")}</span>
+            </li>
+          ))}
+        </ul>
       </div>
     ),
   },
 ];
-
-export function Why() {
-  return (
-    <section id="why" className={`${wrap} py-24 lg:py-32`}>
-      <Head
-        eyebrow="Why Reddit, why AI"
-        title={
-          <>
-            Your next customer is already asking. <span className="text-muted">Are you in the conversation?</span>
-          </>
-        }
-      >
-        Buyers search Reddit for honest opinions, real experiences, and product comparisons. AI search can surface
-        information from those conversations alongside other sources. Showing up with useful, credible information
-        matters.
-      </Head>
-      <div className="mt-14 grid gap-5 lg:grid-cols-3">
-        {whyCards.map((c, i) => (
-          <Reveal key={c.label} delay={i * 0.08}>
-            <article className="flex h-full flex-col rounded-3xl border border-line bg-white p-3 transition-colors duration-300 hover:border-ink">
-              <div className={`flex min-h-56 flex-col justify-center rounded-2xl p-5 ${i === 2 ? "bg-lav/40" : "bg-paper"}`}>
-                {c.visual}
-              </div>
-              <div className="p-4 pt-6">
-                <p className="font-mono text-xs uppercase tracking-widest text-muted">{c.label}</p>
-                <h3 className="mt-2 font-display text-2xl font-bold leading-tight tracking-tight">{c.title}</h3>
-              </div>
-            </article>
-          </Reveal>
-        ))}
-      </div>
-      <Illustrative className="mt-6">Interfaces shown are illustrative mockups</Illustrative>
-    </section>
-  );
-}
-
-/* ── 3. Services ────────────────────────────────────────────────────── */
-
-function ServiceGrid({
-  letter, name, items, cols, icon, tag,
-}: { letter: string; name: string; items: typeof redditServices; cols: string; icon: string; tag: string }) {
-  return (
-    <div className="mt-16">
-      <Reveal className="flex items-center gap-4">
-        <span className={`rounded-full px-3 py-1 font-mono text-xs font-semibold uppercase tracking-wider ${tag}`}>{letter}</span>
-        <h3 className="font-display text-2xl font-bold tracking-tight">{name}</h3>
-        <span aria-hidden className="h-px flex-1 bg-line" />
-        <span className="font-mono text-xs text-muted">{String(items.length).padStart(2, "0")} services</span>
-      </Reveal>
-      <ul className={`mt-6 grid gap-4 sm:grid-cols-2 ${cols}`}>
-        {items.map((s, i) => (
-          <li key={s.title}>
-            <Reveal delay={(i % 4) * 0.05} className="h-full">
-              <article className="group flex h-full flex-col rounded-3xl border border-line bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-ink hover:shadow-[0_24px_40px_-24px_rgba(23,23,23,0.3)]">
-                <div className="flex items-start justify-between">
-                  <span className={`grid size-11 place-items-center rounded-2xl transition-colors duration-300 ${icon}`}>
-                    <s.icon aria-hidden className="size-5" />
-                  </span>
-                  <span className="font-mono text-xs text-muted">{String(i + 1).padStart(2, "0")}</span>
-                </div>
-                <h4 className="mt-8 font-display text-lg font-bold leading-snug tracking-tight">{s.title}</h4>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{s.text}</p>
-              </article>
-            </Reveal>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
 
 export function Services() {
   return (
@@ -163,180 +113,107 @@ export function Services() {
           eyebrow="Our services"
           title={
             <>
-              Everything <span className="text-accent">Reddit</span>.
+              Reddit is complicated.
               <br />
-              Everything <span className="rounded-[0.2em] bg-lav px-[0.15em]">AI visibility</span>.
+              <span className="text-accent">We make it work.</span>
             </>
           }
         >
-          From the first conversation to the next customer recommendation, we build your visibility where it matters.
+          Strategy, conversations, community presence, reputation, paid growth, and search discovery. Built for the way
+          Reddit actually works.
         </Head>
-        <ServiceGrid
-          letter="A"
-          name="Reddit Marketing"
-          items={redditServices}
-          cols="lg:grid-cols-4"
-          tag="bg-accent text-ink"
-          icon="bg-accent/10 text-ink group-hover:bg-accent"
-        />
-        <ServiceGrid
-          letter="B"
-          name="AI Citations & Search Visibility"
-          items={aiServices}
-          cols="lg:grid-cols-3"
-          tag="bg-lav text-ink"
-          icon="bg-lav text-violet group-hover:bg-violet group-hover:text-white"
-        />
+        <ul className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {services.map((s, i) => (
+            <li key={s.title}>
+              <Reveal delay={(i % 3) * 0.07} className="h-full">
+                <article
+                  className={`group flex h-full flex-col rounded-3xl border border-line p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-ink hover:shadow-[0_30px_50px_-30px_rgba(23,23,23,0.4)] ${serviceVisuals[i].tone}`}
+                >
+                  <p className="font-mono text-xs opacity-60">0{i + 1}</p>
+                  <div className="mt-4 flex h-40 items-center">{serviceVisuals[i].visual}</div>
+                  <h3 className="mt-6 font-display text-2xl font-bold leading-tight tracking-tight">{s.title}</h3>
+                  <p className="mt-3 leading-relaxed opacity-70">{s.text}</p>
+                </article>
+              </Reveal>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
 }
 
-/* ── 4. The visual story ────────────────────────────────────────────── */
+/* ── Pricing ────────────────────────────────────────────────────────── */
 
-export function Story() {
+export function Pricing() {
   return (
-    <section id="story" className={`${wrap} py-24 lg:py-32`}>
-      <Head eyebrow="The visual story" title="From Reddit thread to AI answer." />
-      <Reveal className="mt-14">
-        <StoryStages />
-      </Reveal>
-      <div className="mt-10 flex flex-col gap-3 border-t border-line pt-6 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
-        <Illustrative>Illustrative thread and answer, fictional brand</Illustrative>
-        <p className="max-w-xl sm:text-right">
-          AI citations and recommendations are algorithmically determined and not guaranteed.
+    <section id="pricing" className="border-y border-line bg-white/50">
+      <div className={`${wrap} py-24 lg:py-32`}>
+        <Head
+          eyebrow="Pricing"
+          title={
+            <>
+              Two ways to grow.
+              <br />
+              Neither involves guesswork.
+            </>
+          }
+        >
+          Start with a consistent Reddit presence or build a more ambitious program around your goals.
+        </Head>
+        <div className="mt-16 grid gap-5 lg:grid-cols-2">
+          {plans.map((p, i) => (
+            <Reveal key={p.name} delay={i * 0.08}>
+              <article className={`flex h-full flex-col rounded-[2rem] border p-8 sm:p-10 ${p.dark ? "border-ink bg-ink text-paper" : "border-line bg-white"}`}>
+                <p className={`font-mono text-xs uppercase tracking-widest ${p.dark ? "text-accent" : "text-muted"}`}>{p.eyebrow}</p>
+                <h3 className="mt-4 font-display text-3xl font-bold tracking-tight">{p.name}</h3>
+                <p className="mt-6 flex flex-wrap items-baseline gap-x-2.5">
+                  {p.priceNote && <span className="text-sm opacity-70">{p.priceNote[0]}</span>}
+                  <span className={`font-display text-6xl font-bold tracking-[-0.04em] sm:text-7xl ${p.dark ? "" : "text-accent"}`}>{p.price}</span>
+                  {p.priceNote && <span className="text-sm opacity-70">{p.priceNote[1]}</span>}
+                </p>
+                <p className="mt-5 max-w-md leading-relaxed opacity-70">{p.blurb}</p>
+                <div className={`my-8 grid gap-6 border-t pt-8 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3 ${p.dark ? "border-paper/15" : "border-line"}`}>
+                  {p.groups.map((g) => (
+                    <div key={g.label}>
+                      <p className="font-mono text-[11px] uppercase tracking-widest opacity-60">{g.label}</p>
+                      <ul className="mt-3 space-y-2 text-sm leading-snug">
+                        {g.items.map((it) => (
+                          <li key={it}>{it}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+                {p.note && <p className="mb-8 rounded-2xl bg-paper p-4 text-xs leading-relaxed text-muted">{p.note}</p>}
+                <div className="mt-auto">
+                  <Cta href="#contact" className={`w-full sm:w-auto ${p.dark ? "hover:!bg-paper hover:!text-ink" : ""}`}>
+                    {p.cta}
+                  </Cta>
+                  <p className="mt-5 text-sm opacity-60">{p.footer}</p>
+                </div>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+        <p className="mx-auto mt-14 max-w-2xl text-center font-display text-xl font-semibold leading-snug tracking-tight">
+          Not sure where to start? We’ll help you figure out what Reddit can realistically do for your brand.{" "}
+          <a href="#contact" className="whitespace-nowrap underline decoration-accent decoration-2 underline-offset-4 transition-colors hover:text-accent">
+            Talk to us
+          </a>
         </p>
       </div>
     </section>
   );
 }
 
-/* ── 5. Why citations.agency ────────────────────────────────────────── */
-
-export function Manifesto() {
-  return (
-    <section className="px-2 sm:px-4">
-      <div className="rounded-[2rem] bg-ink text-paper">
-        <div className={`${wrap} py-24 lg:py-32`}>
-          <Head
-            dark
-            eyebrow="Why citations.agency"
-            title={
-              <>
-                Not another agency posting <span className="text-accent">into the void.</span>
-              </>
-            }
-          >
-            We combine community expertise, thoughtful content, and AI-search intelligence to build visibility that
-            compounds.
-          </Head>
-          <ol className="mt-16 grid gap-x-12 sm:grid-cols-2">
-            {reasons.map((r, i) => (
-              <li key={r.title}>
-                <Reveal delay={(i % 2) * 0.08} className="group flex gap-6 border-t border-paper/15 py-8">
-                  <span className="font-mono text-sm text-accent">{String(i + 1).padStart(2, "0")}</span>
-                  <div>
-                    <h3 className="font-display text-2xl font-bold tracking-tight transition-transform duration-300 group-hover:translate-x-1 sm:text-3xl">
-                      {r.title}
-                    </h3>
-                    <p className="mt-3 max-w-md leading-relaxed text-paper/70">{r.text}</p>
-                  </div>
-                </Reveal>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ── 6. How we work ─────────────────────────────────────────────────── */
-
-export function Process() {
-  return (
-    <section id="how-it-works" className={`${wrap} py-24 lg:py-32`}>
-      <Head eyebrow="How we work" title="Simple process. Serious execution." />
-      <ol className="mt-16 grid lg:grid-cols-4">
-        {process.map((p, i) => (
-          <li key={p.title} className="relative border-l border-ink/15 pb-12 pl-8 last:pb-0 lg:border-l-0 lg:border-t lg:pb-0 lg:pl-0 lg:pr-10 lg:pt-10">
-            <span aria-hidden className="absolute -left-[5px] top-0 size-2.5 rounded-full bg-accent ring-4 ring-paper lg:-top-[5px] lg:left-0" />
-            <Reveal delay={i * 0.1}>
-              <div className="flex items-center gap-3">
-                <span className="font-mono text-sm text-muted">{String(i + 1).padStart(2, "0")}.</span>
-                <span className="grid size-9 place-items-center rounded-full border border-line bg-white">
-                  <p.icon aria-hidden className="size-4" />
-                </span>
-              </div>
-              <h3 className="mt-5 font-display text-3xl font-bold tracking-tight">{p.title}</h3>
-              <p className="mt-3 leading-relaxed text-muted">{p.text}</p>
-            </Reveal>
-          </li>
-        ))}
-      </ol>
-    </section>
-  );
-}
-
-/* ── 7. Pricing ─────────────────────────────────────────────────────── */
-
-export function Pricing() {
-  return (
-    <section id="pricing" className="border-y border-line bg-white/50">
-      <div className={`${wrap} py-24 lg:py-32`}>
-        <Head eyebrow="Pricing" title="Choose your visibility engine.">
-          Focused programs for every stage of brand growth.
-        </Head>
-        <div className="mt-16 grid gap-5 lg:grid-cols-3 lg:items-stretch">
-          {plans.map((p, i) => (
-            <Reveal key={p.name} delay={i * 0.08} className={p.popular ? "lg:-my-5" : ""}>
-              <article
-                className={`relative flex h-full flex-col rounded-3xl border p-7 sm:p-8 ${
-                  p.popular ? "border-ink bg-ink text-paper shadow-[0_40px_70px_-35px_rgba(23,23,23,0.6)]" : "border-line bg-white"
-                }`}
-              >
-                {p.popular && (
-                  <span className="absolute -top-3 left-7 rounded-full bg-accent px-3 py-1 font-mono text-[11px] font-semibold uppercase tracking-wider text-ink">
-                    Most Popular
-                  </span>
-                )}
-                <p className={`font-mono text-xs uppercase tracking-widest ${p.popular ? "text-paper/60" : "text-muted"}`}>
-                  Plan {String(i + 1).padStart(2, "0")}
-                </p>
-                <h3 className="mt-3 font-display text-3xl font-bold tracking-tight">{p.name}</h3>
-                <p className={`mt-3 min-h-[2lh] leading-relaxed ${p.popular ? "text-paper/70" : "text-muted"}`}>{p.blurb}</p>
-                <p className={`mt-8 border-y py-5 font-display text-4xl font-bold tracking-tight ${p.popular ? "border-paper/15" : "border-line"}`}>
-                  Custom quote
-                </p>
-                <p className={`mt-6 text-sm font-semibold ${p.popular ? "text-accent" : ""}`}>{p.lead}</p>
-                <ul className="mb-8 mt-4 space-y-3 text-sm">
-                  {p.features.map((f) => (
-                    <li key={f} className="flex gap-3">
-                      <Check aria-hidden className={`mt-0.5 size-4 shrink-0 ${p.popular ? "text-accent" : "text-violet"}`} />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-                <Cta href="#contact" variant={p.popular ? "accent" : "outline"} className={`mt-auto ${p.popular ? "hover:!bg-paper hover:!text-ink" : ""}`}>
-                  {p.cta}
-                </Cta>
-              </article>
-            </Reveal>
-          ))}
-        </div>
-        <p className="mt-14 text-center text-sm text-muted">Every engagement is scoped to your goals, audience, and market.</p>
-      </div>
-    </section>
-  );
-}
-
-/* ── 8. FAQ ─────────────────────────────────────────────────────────── */
+/* ── FAQ ────────────────────────────────────────────────────────────── */
 
 export function Faq() {
   return (
     <section id="faq" className={`${wrap} grid gap-12 py-24 lg:grid-cols-[1fr_1.4fr] lg:py-32`}>
       <div className="lg:sticky lg:top-28 lg:self-start">
-        <Head eyebrow="FAQ" title="Frequently asked questions." />
+        <Head eyebrow="FAQ" title="Questions worth asking first." />
       </div>
       <Reveal>
         {faqs.map((f) => (
@@ -355,50 +232,61 @@ export function Faq() {
   );
 }
 
-/* ── 9. Closing CTA + footer ────────────────────────────────────────── */
+/* ── Closing CTA + footer ───────────────────────────────────────────── */
+
+const uncover = ["Where your buyers are talking", "Where competitors are winning attention", "The opportunities you’re missing"];
 
 export async function Closing() {
   "use cache"; // footer year is read from the clock
   return (
-    <div className="bg-ink text-paper">
-      <section id="contact" className={`${wrap} grid gap-14 py-24 lg:grid-cols-2 lg:items-center lg:py-32`}>
-        <Head
-          dark
-          eyebrow="Free visibility audit"
-          title={
-            <>
-              The conversation is happening. <span className="text-accent">Make sure your brand belongs in it.</span>
-            </>
-          }
-        >
-          See where your brand stands on Reddit and in AI search — and discover your biggest opportunities.
-        </Head>
-        <Reveal delay={0.1}>
-          <ContactForm />
-        </Reveal>
-      </section>
-      <footer className={`${wrap} border-t border-paper/15 py-10 text-sm text-paper/60`}>
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="font-display text-xl font-bold tracking-tight text-paper">
-              citations<span className="text-accent">.agency</span>
+    <div className="px-2 pb-2 sm:px-4 sm:pb-4">
+      <div className="rounded-[2rem] bg-ink text-paper">
+        <section id="contact" className={`${wrap} grid gap-12 py-20 lg:grid-cols-[1.25fr_1fr] lg:items-center lg:gap-20 lg:py-28`}>
+          <Reveal>
+            <p className="font-mono text-xs uppercase tracking-widest text-paper/60">Free Reddit audit</p>
+            <h2 className="mt-5 font-display text-[clamp(2rem,4.2vw,3.5rem)] font-bold leading-[1.05] tracking-[-0.035em]">
+              Reddit already has an opinion. <span className="text-accent">Let’s make sure your brand shows up.</span>
+            </h2>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-paper/70">
+              Find out where your buyers are talking, where your competitors are winning attention, and what
+              opportunities you’re missing.
             </p>
-            <p className="mt-1">Reddit Marketing + AI Visibility</p>
+            <ul className="mt-10 max-w-md">
+              {uncover.map((u, i) => (
+                <li key={u} className="flex items-center gap-4 border-t border-paper/15 py-3.5 last:border-b">
+                  <span className="font-mono text-xs text-accent">0{i + 1}</span>
+                  {u}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+          <Reveal delay={0.1} className="w-full max-w-md lg:justify-self-end">
+            <ContactForm />
+          </Reveal>
+        </section>
+        <footer className={`${wrap} border-t border-paper/15 py-10 text-sm text-paper/60`}>
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="font-display text-xl font-bold tracking-tight text-paper">
+                citations<span className="text-accent">.agency</span>
+              </p>
+              <p className="mt-1">Reddit Marketing + AI Visibility</p>
+            </div>
+            <nav aria-label="Footer" className="flex flex-wrap gap-x-6 gap-y-2">
+              {[["Services", "#services"], ["Pricing", "#pricing"], ["Contact", "#contact"], ["Privacy Policy", "/privacy"]].map(([l, h]) => (
+                <a key={h} href={h} className="transition-colors hover:text-paper">
+                  {l}
+                </a>
+              ))}
+            </nav>
           </div>
-          <nav aria-label="Footer" className="flex flex-wrap gap-x-6 gap-y-2">
-            {[["Services", "#services"], ["Pricing", "#pricing"], ["Contact", "#contact"], ["Privacy Policy", "/privacy"]].map(([l, h]) => (
-              <a key={h} href={h} className="transition-colors hover:text-paper">
-                {l}
-              </a>
-            ))}
-          </nav>
-        </div>
-        <p className="mt-8 max-w-3xl text-xs leading-relaxed text-paper/60">
-          © {new Date().getFullYear()} citations.agency. citations.agency is an independent agency and is not affiliated
-          with, endorsed by, or sponsored by Reddit, OpenAI, Google, Perplexity, or any other named AI platform. All
-          trademarks belong to their respective owners.
-        </p>
-      </footer>
+          <p className="mt-8 max-w-3xl text-xs leading-relaxed text-paper/60">
+            © {new Date().getFullYear()} citations.agency. citations.agency is an independent agency and is not
+            affiliated with, endorsed by, or sponsored by Reddit, OpenAI, Anthropic, Google, Perplexity, or any other
+            named platform. All trademarks belong to their respective owners.
+          </p>
+        </footer>
+      </div>
     </div>
   );
 }

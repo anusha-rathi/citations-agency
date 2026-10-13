@@ -1,106 +1,93 @@
-import {
-  BookOpenCheck, Compass, Gauge, Megaphone, MessagesSquare, PenLine, Radar, Rocket, ScanSearch, Search,
-  ShieldCheck, Sprout, Swords, Target, Telescope, TextSearch, TrendingUp,
-} from "lucide-react";
-
 export const nav = [
   { href: "#why", label: "Why Reddit" },
   { href: "#services", label: "Services" },
-  { href: "#how-it-works", label: "How It Works" },
+  { href: "#proof", label: "Proof" },
+  { href: "#advantage", label: "Advantage" },
+  { href: "#process", label: "Process" },
   { href: "#pricing", label: "Pricing" },
   { href: "#faq", label: "FAQ" },
 ];
 
-export const redditServices = [
-  { icon: Compass, title: "Reddit Growth Strategy", text: "Audience research, subreddit selection, competitive intelligence, and community-specific planning." },
-  { icon: Sprout, title: "Organic Reddit Marketing", text: "Valuable posts, helpful discussions, educational content, and authentic brand participation." },
-  { icon: MessagesSquare, title: "Reddit Community Engagement", text: "Thoughtful replies, community conversations, and ongoing participation." },
-  { icon: Target, title: "Reddit Lead Generation", text: "Identifying high-intent buyer discussions and turning relevant conversations into opportunities." },
-  { icon: Rocket, title: "Reddit Launch Campaigns", text: "Product launches, announcements, community activations, and AMAs." },
-  { icon: ShieldCheck, title: "Reddit Reputation Management", text: "Social listening, sentiment analysis, factual responses, and proactive reputation building." },
-  { icon: Megaphone, title: "Reddit Ads", text: "Paid campaign strategy, targeting, creatives, testing, and optimization." },
-  { icon: Search, title: "Reddit SEO & Brand Discovery", text: "Content and discussions designed to answer real search demand and help users discover a brand." },
-];
-
-export const aiServices = [
-  { icon: ScanSearch, title: "AI Visibility Audits", text: "Understand where and how your brand appears in AI-generated answers." },
-  { icon: Gauge, title: "Generative Engine Optimization (GEO)", text: "Improve content structure, factual clarity, topical relevance, and discoverability." },
-  { icon: TextSearch, title: "Answer Engine Optimization (AEO)", text: "Develop helpful, answer-first content that addresses buyer questions." },
-  { icon: Radar, title: "AI Citation Monitoring", text: "Track brand mentions, linked citations, source URLs, and competitor appearances across selected queries and models." },
-  { icon: BookOpenCheck, title: "Brand Authority & Content Strategy", text: "Develop credible, expert-backed resources and consistent brand information across relevant sources." },
-  { icon: Swords, title: "Competitor AI Visibility Analysis", text: "Identify where competitors appear in AI answers and uncover missed opportunities." },
-];
-
-export const reasons = [
-  { title: "Strategy before posting", text: "Research the communities, conversations, and questions that matter." },
-  { title: "Humans, not spam bots", text: "Authentic engagement, human review, and platform-compliant marketing." },
-  { title: "Reddit + AI together", text: "Understand both the conversation itself and how your brand is represented in AI search." },
-  { title: "Reporting that makes sense", text: "Follow relevant conversations, brand mentions, referral opportunities, and AI visibility over time." },
-];
-
-export const process = [
-  { icon: Telescope, title: "Audit", text: "We analyze your current Reddit footprint, key communities, competitor visibility, and AI search appearances." },
-  { icon: Compass, title: "Strategize", text: "We identify relevant opportunities, buyer questions, target communities, campaign priorities, and measurable objectives." },
-  { icon: PenLine, title: "Execute", text: "We create helpful content, participate transparently in conversations, run approved campaigns, and improve your AI-search-ready content." },
-  { icon: TrendingUp, title: "Optimize", text: "We track performance, learn from real audience responses, monitor AI visibility, and continuously refine the strategy." },
+export const services = [
+  { title: "Reddit Growth Strategy", text: "Find the right communities, understand your competitors, and discover the conversations that actually matter to your buyers." },
+  { title: "Organic Reddit Marketing", text: "Content built for Reddit, not recycled from a marketing calendar. Useful discussions and native posts tailored to each community." },
+  { title: "Reddit Community Engagement", text: "Thoughtful participation in relevant discussions, where credibility and context matter more than promotional messaging." },
+  { title: "Reddit Reputation Management", text: "Know what people are saying about your brand. Identify important conversations, correct misinformation transparently, and build a stronger presence." },
+  { title: "Reddit Ads", text: "Reach relevant audiences with Reddit-native paid campaigns, sharper targeting, stronger creative, and continuous optimization." },
+  { title: "Reddit SEO & Brand Discovery", text: "Find the Reddit queries and conversations that show up in search. Build valuable content around real buyer questions and monitor search visibility." },
 ];
 
 export const plans = [
   {
-    name: "Reddit Starter",
-    blurb: "For brands establishing a credible Reddit presence.",
-    lead: "Includes",
-    features: ["Reddit presence audit", "Subreddit research", "Monthly content strategy", "Organic content and community engagement", "Brand mention monitoring", "Monthly performance summary"],
-    cta: "Discuss Starter",
+    eyebrow: "For brands ready to show up consistently",
+    name: "Growth",
+    price: "$2,000",
+    priceNote: ["Starting at", "/ month"],
+    blurb: "Your Reddit presence, strategy, content, and visibility tracking — managed together.",
+    groups: [
+      { label: "Research & strategy", items: ["Reddit presence audit", "Subreddit and competitor research", "Monthly content strategy"] },
+      { label: "Content & engagement", items: ["20–25 organic Reddit posts per month", "35–40 relevant comments per month", "Subreddit-specific content adaptation"] },
+      { label: "Tracking & reporting", items: ["Relevant keyword and SERP tracking", "AI brand mention and citation monitoring", "Regular reporting and optimization"] },
+    ],
+    note: "Posts and comments are planned monthly deliverables, subject to subreddit rules and content suitability. We don’t publish filler to hit a number.",
+    cta: "Start Growing",
+    footer: "A consistent, research-led program for brands building Reddit visibility.",
   },
   {
-    name: "Reddit Growth + AI",
-    blurb: "For brands ready to build Reddit demand and AI-search visibility together.",
-    lead: "Everything in Starter, plus",
-    features: ["Expanded community engagement", "High-intent discussion research", "AI visibility baseline and tracking", "GEO/AEO recommendations", "Competitor analysis", "Regular reporting and optimization"],
-    cta: "Discuss Growth",
-    popular: true,
-  },
-  {
-    name: "Category Authority",
-    blurb: "For ambitious brands seeking a larger, integrated program.",
-    lead: "Everything in Growth, plus",
-    features: ["Comprehensive Reddit strategy", "Launch and thought-leadership campaigns", "Reputation monitoring and response planning", "Reddit Ads strategy and management", "Expanded AI citation tracking", "Customized reporting and strategy reviews", "Dedicated strategic support"],
-    cta: "Build Your Plan",
+    eyebrow: "For brands with bigger ambitions",
+    name: "Built Around You",
+    price: "Custom",
+    blurb: "Not every brand needs the same subreddits, the same volume, or the same strategy. We build the program around the opportunity.",
+    groups: [
+      { label: "Scope", items: ["Everything in Growth, adjusted to your needs", "Expanded subreddit coverage", "Higher or tailored content and engagement volume"] },
+      { label: "Intelligence", items: ["Advanced competitor and keyword intelligence", "Custom reputation and conversation monitoring", "Enhanced search and AI visibility analysis"] },
+      { label: "Support", items: ["Reddit Ads and campaign support", "Custom reporting and strategic support", "Additional priorities agreed during discovery"] },
+    ],
+    cta: "Let’s Build Your Plan",
+    footer: "The right scope, resources, and strategy for your market.",
+    dark: true,
   },
 ];
 
 export const faqs = [
   {
-    q: "Why should my brand invest in Reddit marketing?",
-    a: "Because buyers go there on purpose. People turn to Reddit when they want unfiltered opinions, comparisons, and real experience. If the threads about your category exist without you, guesswork and competitors fill the gap. Showing up with something genuinely useful builds awareness and trust where decisions are being shaped.",
+    q: "Why can't we just do Reddit marketing in-house?",
+    a: "You can, and some teams do it well. But it's rarely just a writing job. Effective Reddit marketing combines community expertise, contributor credibility, account operations, research, and adapting content to each subreddit. Most in-house teams have one or two of those. Building the rest takes months of history and a fair amount of trial and error, which is the part we've already done.",
   },
   {
-    q: "How can Reddit influence AI search visibility?",
-    a: "AI search experiences draw on public web content, and public Reddit discussions can be among the sources they surface or link to. How much weight any source gets varies by model, query, and time. Useful, accurate conversations about your brand give those systems better material to work with, alongside your own site and other credible sources.",
+    q: "Why does existing account infrastructure matter?",
+    a: "Reddit communities judge who is speaking, not only what's said. Many subreddits restrict new or low-history accounts, and moderators notice accounts that only show up to promote. Established accounts with real participation history, managed carefully and within each community's rules, are what make consistent participation possible. That takes time to build, which is why starting from zero is slow.",
   },
   {
-    q: "Can you guarantee ChatGPT or Perplexity citations?",
-    a: "No. No agency can control or guarantee a third-party AI model's outputs, and you should be wary of anyone who says otherwise. A mention (your brand named in an answer) and a linked citation (a source URL shown) are separate metrics, and both are decided algorithmically. We focus on what can be influenced: improved discoverability, credible sources about your brand, and visibility measured across an agreed set of queries.",
+    q: "How is Reddit content different from LinkedIn or traditional social media content?",
+    a: "LinkedIn rewards polish and personal brand. Reddit rewards being useful and specific, and it punishes anything that reads like marketing. Each subreddit has its own tone, format, and rules, so a post that works in one community can be removed in another. We write for the community first and the brand second.",
   },
   {
-    q: "How is Reddit marketing different from traditional social media marketing?",
-    a: "Reddit is organized around topics and communities, not followers. Every subreddit has its own rules, moderators, and tolerance for brands, and promotional posting gets removed fast. What works is being useful: answering questions, disclosing who you are, and contributing consistently. Threads also stay searchable long after they're posted, so good contributions keep working.",
+    q: "How do you decide which subreddits to target?",
+    a: "We start with your buyers, not a list of big subreddits. We look at where your category is discussed, which questions keep coming up, how competitors are talked about, what shows up in search, and what each community's rules allow. A smaller, relevant subreddit usually beats a huge general one.",
   },
   {
-    q: "What does a Reddit marketing campaign include?",
-    a: "It depends on scope, but typically: an audit of your current footprint, subreddit and conversation research, a content and engagement plan, disclosed participation on behalf of your brand, brand-mention monitoring, and regular reporting. Launch campaigns, Reddit Ads, and AI visibility tracking are added where they fit.",
+    q: "What does the $2,000 Growth plan include?",
+    a: "Growth starts at $2,000 per month. It covers a Reddit presence audit, subreddit and competitor research, a monthly content strategy, a planned 20–25 organic posts and 35–40 relevant comments per month adapted to each subreddit, keyword and SERP tracking, AI brand mention and citation monitoring, and regular reporting. Post and comment volumes are planned deliverables, subject to subreddit rules and content suitability. We won't publish filler to hit a number.",
   },
   {
-    q: "Can you help with negative Reddit discussions?",
-    a: "Yes, honestly. We monitor mentions, assess what's being said, and help you respond with facts, transparency, and real fixes where the criticism is fair. We don't use fake accounts, manipulate votes, or try to bury legitimate criticism. Steady, proactive participation is the best long-term reputation work.",
+    q: "Can Reddit conversations affect how our brand appears in ChatGPT or Claude?",
+    a: "They can. AI search tools draw on public web content, and public Reddit discussions can be among the sources they surface or link to. How much weight any source gets varies by tool, query, and time. What we can do is make useful, accurate information about your brand easier to find. What we can't do is decide what a model says or which sources it cites.",
   },
   {
-    q: "How do you measure results?",
-    a: "We agree on objectives up front and report against them: relevant conversations joined, engagement quality, brand mentions and sentiment, referral traffic and leads where trackable, and AI visibility. For AI, brand mentions and linked citations are tracked separately across a defined set of queries and models.",
+    q: "Do you guarantee AI citations, engagement, rankings, or sales?",
+    a: "No. We don't control Reddit communities, Google, or third-party AI models, and no honest agency can guarantee what they'll do. A brand mention and a linked citation are different results, and neither can be promised. What we commit to is the work: research, planned content and engagement, monitoring, and clear reporting on what actually happened.",
+  },
+  {
+    q: "What if a post gets removed or a community doesn't accept it?",
+    a: "It happens, even with careful work. Moderators have the final say. We review community rules before posting to reduce avoidable removals, and when something is removed we work out why and adjust rather than forcing it back in. If a community isn't a fit for brand participation, we respect that and focus elsewhere.",
+  },
+  {
+    q: "Can we approve content before it goes live?",
+    a: "Yes. Review and approval are part of the workflow. We agree up front what you want to see before it goes live and how fast-moving comment replies should be handled, so approvals don't stall timely conversations.",
   },
   {
     q: "How soon can we get started?",
-    a: "Start with the free visibility audit. Once we've walked you through it and agreed on scope, onboarding begins. Timing depends on the size of the program, and you'll get a realistic schedule before you commit to anything.",
+    a: "Start with the free Reddit audit. Once we've walked you through it and agreed on scope, onboarding begins with research into your product, competitors, and communities. You'll get a realistic schedule before you commit to anything.",
   },
 ];

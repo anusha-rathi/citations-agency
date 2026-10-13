@@ -1,22 +1,17 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Check } from "lucide-react";
 import { useState } from "react";
 import { ctaClass } from "./ui";
 
-// Any endpoint that accepts a JSON POST works (Formspree, Basin, your own API route).
+// Integration checklist: see README.md ("Contact form").
 const ENDPOINT = process.env.NEXT_PUBLIC_FORM_ENDPOINT;
+const EMAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL;
 
-type Status = "idle" | "sending" | "sent" | "error" | "unconfigured";
+type Status = "idle" | "sending" | "sent" | "mail" | "error";
 
 const input =
-  "mt-2 w-full rounded-xl border border-paper/15 bg-paper/5 px-4 py-3 text-paper placeholder:text-paper/35 transition-colors focus:border-accent focus:outline-none aria-[invalid=true]:border-accent";
-
-const messages: Partial<Record<Status, string>> = {
-  sent: "Thanks. Your request is in, and we’ll be in touch by email.",
-  error: "Something went wrong and your request was not sent. Please try again.",
-  unconfigured: "Nothing was sent: this form isn’t connected to an inbox yet.",
-};
+  "mt-1.5 w-full rounded-xl border border-ink/15 bg-white px-4 py-3 text-ink placeholder:text-ink/35 transition-colors focus:border-ink focus:outline-none aria-[invalid=true]:border-accent";
 
 export function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
@@ -26,13 +21,21 @@ export function ContactForm() {
     e.preventDefault();
     const form = e.currentTarget;
     const invalid = Array.from(form.querySelectorAll<HTMLInputElement>("input:invalid"));
-    // First invalid input per name wins (radio groups share one).
+    // Reversed so the first invalid input per name wins.
     setErrors(Object.fromEntries(invalid.reverse().map((el) => [el.name, el.validationMessage])));
     if (invalid.length) return invalid.at(-1)!.focus();
 
-    const data = Object.fromEntries(new FormData(form));
-    if (data._gotcha) return; // honeypot
-    if (!ENDPOINT) return setStatus("unconfigured");
+    const data = Object.fromEntries(new FormData(form)) as Record<string, string>;
+    // Spam traps: hidden honeypot field, and submissions faster than a person can type.
+    if (data._gotcha || e.timeStamp < 3000) return;
+
+    if (!ENDPOINT) {
+      if (!EMAIL) return setStatus("error");
+      // Fallback until the endpoint is live: hand the details to the visitor's email app.
+      const body = `Name: ${data.name}\nWork email: ${data.email}\nCompany website: ${data.website}\nLooking for: ${data.goal || "Not specified"}`;
+      window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent("Free Reddit audit request")}&body=${encodeURIComponent(body)}`;
+      return setStatus("mail");
+    }
 
     setStatus("sending");
     try {
@@ -42,7 +45,6 @@ export function ContactForm() {
         body: JSON.stringify(data),
       });
       if (!res.ok) throw new Error(String(res.status));
-      form.reset();
       setStatus("sent");
     } catch {
       setStatus("error");
@@ -52,21 +54,25 @@ export function ContactForm() {
   const field = (name: string, label: string, props: React.InputHTMLAttributes<HTMLInputElement>) => (
     <label className="block text-sm font-medium">
       {label}
-      <input
-        name={name}
-        required
-        aria-invalid={!!errors[name]}
-        aria-describedby={errors[name] ? `${name}-error` : undefined}
-        className={input}
-        {...props}
-      />
+      <input name={name} required aria-invalid={!!errors[name]} aria-describedby={errors[name] ? `${name}-error` : undefined} className={input} {...props} />
       {errors[name] && (
-        <span id={`${name}-error`} className="mt-1.5 block text-sm font-normal text-accent">
+        <span id={`${name}-error`} className="mt-1 block text-sm font-normal text-[#c2371c]">
           {errors[name]}
         </span>
       )}
     </label>
   );
+
+  if (status === "sent")
+    return (
+      <div role="status" className="rounded-3xl bg-paper p-8 text-ink sm:p-10">
+        <span className="grid size-12 place-items-center rounded-full bg-accent">
+          <Check aria-hidden className="size-6" strokeWidth={2.5} />
+        </span>
+        <h3 className="mt-6 font-display text-2xl font-bold tracking-tight">Request received.</h3>
+        <p className="mt-2 leading-relaxed text-muted">Thanks. We’ll look at your brand and reply by email.</p>
+      </div>
+    );
 
   return (
     <form
@@ -76,52 +82,36 @@ export function ContactForm() {
         const { name } = e.target as unknown as HTMLInputElement;
         if (errors[name]) setErrors((prev) => ({ ...prev, [name]: "" }));
       }}
-      className="space-y-5 rounded-3xl border border-paper/10 bg-paper/[0.04] p-6 sm:p-8"
+      className="space-y-4 rounded-3xl bg-paper p-6 text-ink shadow-[0_40px_80px_-40px_rgba(0,0,0,0.8)] sm:p-8"
     >
-      {!ENDPOINT && (
-        <p className="rounded-xl border border-dashed border-accent/60 px-4 py-3 font-mono text-xs leading-relaxed text-paper/80">
-          Form not connected yet. Set NEXT_PUBLIC_FORM_ENDPOINT to start receiving submissions.
-        </p>
-      )}
-      <div className="grid gap-5 sm:grid-cols-2">
-        {field("name", "Name", { autoComplete: "name", placeholder: "Ada Lovelace" })}
-        {field("email", "Work email", { type: "email", autoComplete: "email", placeholder: "ada@yourbrand.com" })}
-      </div>
-      {field("website", "Company website", {
-        inputMode: "url",
-        autoComplete: "url",
-        placeholder: "yourbrand.com",
-        pattern: "\\S+\\.\\S+",
-        title: "Enter a website like yourbrand.com",
-      })}
+      <h3 className="font-display text-2xl font-bold tracking-tight">Let’s find your Reddit opportunity.</h3>
+      {field("name", "Your name", { autoComplete: "name" })}
+      {field("email", "Work email", { type: "email", autoComplete: "email", placeholder: "you@company.com" })}
+      {field("website", "Company website", { inputMode: "url", autoComplete: "url", placeholder: "company.com", pattern: "\\S+\\.\\S+", title: "Enter a website like company.com" })}
       <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" aria-hidden className="hidden" />
+      <label className="block text-sm font-medium">
+        What are you looking for? <span className="font-normal text-muted">(optional)</span>
+        <select name="goal" defaultValue="" className={input}>
+          <option value="">Select one</option>
+          <option>Build our Reddit presence</option>
+          <option>Improve existing Reddit performance</option>
+          <option>Search and AI visibility</option>
+          <option>Not sure yet</option>
+        </select>
+      </label>
 
-      <fieldset aria-describedby={errors.interest ? "interest-error" : undefined}>
-        <legend className="text-sm font-medium">Primary interest</legend>
-        <div className="mt-2 flex flex-wrap gap-2">
-          {["Reddit Marketing", "AI Visibility", "Both"].map((v) => (
-            <label
-              key={v}
-              className="cursor-pointer rounded-full border border-paper/15 px-4 py-2 text-sm transition-colors hover:border-paper/50 has-checked:border-accent has-checked:bg-accent has-checked:text-ink has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-violet"
-            >
-              <input type="radio" name="interest" value={v} required className="sr-only" />
-              {v}
-            </label>
-          ))}
-        </div>
-        {errors.interest && (
-          <span id="interest-error" className="mt-1.5 block text-sm text-accent">
-            {errors.interest}
-          </span>
-        )}
-      </fieldset>
-
-      <button type="submit" disabled={status === "sending"} className={`${ctaClass("accent")} w-full hover:!bg-paper hover:!text-ink disabled:opacity-60`}>
-        {status === "sending" ? "Sending…" : "Get My Free Visibility Audit"}
+      <button type="submit" disabled={status === "sending"} className={`${ctaClass("accent")} !mt-6 w-full disabled:opacity-60`}>
+        {status === "sending" ? "Sending…" : "Get My Free Reddit Audit"}
         <ArrowUpRight aria-hidden className="size-4" />
       </button>
-      <p role="status" aria-live="polite" className="min-h-5 text-sm text-paper/80">
-        {messages[status]}
+      <p role="status" aria-live="polite" className="text-sm leading-relaxed text-muted">
+        {status === "error" && (
+          <span className="text-[#c2371c]">
+            Your request wasn’t sent. Please try again in a moment{EMAIL ? <>, or email us at <a className="underline" href={`mailto:${EMAIL}`}>{EMAIL}</a></> : null}.
+          </span>
+        )}
+        {status === "mail" && <>Your email app should have opened with your details. Send that message to finish, or write to {EMAIL}.</>}
+        {(status === "idle" || status === "sending") && "No generic pitch. We’ll look at your brand and its actual opportunities."}
       </p>
     </form>
   );
