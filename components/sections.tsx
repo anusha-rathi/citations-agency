@@ -1,95 +1,67 @@
 import { Check, Plus } from "lucide-react";
-import { capabilities, custom, faqs, growth } from "@/lib/content";
-import { card, wrap } from "@/lib/styles";
+import { custom, faqs, growth } from "@/lib/content";
+import { wrap } from "@/lib/styles";
 import { AuditDialog } from "./contact";
 import { AuditCta, Head, Reveal } from "./ui";
 
-/* ── Capabilities ───────────────────────────────────────────────────── */
-
-export function Capabilities() {
-  return (
-    <section className={`${wrap} py-16 lg:py-20`}>
-      <Head eyebrow="capabilities" title="Research-led. Content-powered. Wherever it matters.">
-        From Reddit conversations to search visibility, our capabilities are built around the opportunities your research
-        reveals.
-      </Head>
-      <Reveal className={`mt-10 overflow-hidden ${card}`}>
-        <ul className="grid sm:grid-cols-2 lg:grid-cols-3">
-          {capabilities.map(([t, d], n) => (
-            <li key={t} className="group border-line p-6 transition-colors hover:bg-paper/70 max-lg:[&:nth-child(n+2)]:border-t sm:max-lg:[&:nth-child(2)]:border-t-0 sm:max-lg:[&:nth-child(even)]:border-l lg:[&:nth-child(n+4)]:border-t lg:[&:not(:nth-child(3n+1))]:border-l">
-              <p className="font-mono text-xs text-accent">0{n + 1}</p>
-              <h3 className="mt-2 font-display text-lg font-bold tracking-tight">{t}</h3>
-              <p className="mt-1.5 text-sm leading-relaxed text-muted">{d}</p>
-            </li>
-          ))}
-        </ul>
-      </Reveal>
-    </section>
-  );
-}
-
 /* ── Pricing + audit prompt ─────────────────────────────────────────── */
+
+const plans = [
+  {
+    open: "Ready-made for you.",
+    name: "Growth Plan",
+    price: <><span className="text-sm font-normal text-muted">Starting at</span> $2,000<span className="text-base font-normal text-muted">/month</span></>,
+    items: growth,
+    cta: "Let’s get started",
+    surface: "bg-[radial-gradient(90%_70%_at_100%_0%,#FFE7DE_0%,#FFFDFA_60%)]",
+  },
+  {
+    open: "Built around you.",
+    name: "Custom Plan",
+    price: <>Custom pricing</>,
+    text: "Not sure what your brand needs yet? That’s exactly what we’ll figure out together. We’ll build a program around your goals, category, and opportunities.",
+    items: custom,
+    cta: "Let’s figure it out",
+    surface: "bg-[radial-gradient(90%_70%_at_100%_0%,#EEE9FF_0%,#FFFDFA_60%)]",
+  },
+];
 
 export function Pricing() {
   return (
     <section id="pricing" className={`${wrap} py-16 lg:py-20`}>
-      <Head eyebrow="pricing" title="Good work. Clear scope.">
-        Start with a focused program, or build something around your specific visibility goals.
-      </Head>
-      <div className="mt-10 grid gap-4 lg:grid-cols-[3fr_2fr]">
-        <Reveal>
-          <article className="flex h-full flex-col rounded-3xl border border-line bg-[radial-gradient(110%_90%_at_100%_0%,#FFE7DE_0%,#FFFFFF_55%)] p-6 shadow-soft transition-shadow duration-300 hover:shadow-lift sm:p-8">
-            <h3 className="font-display text-2xl font-bold tracking-tight">Growth</h3>
-            <p className="mt-4 flex flex-wrap items-baseline gap-x-2">
-              <span className="text-sm text-muted">Starting at</span>
-              <span className="font-display text-5xl font-bold tracking-[-0.04em]">{growth.price}</span>
-              <span className="text-sm text-muted">/ month</span>
-            </p>
-            <p className="mt-3 max-w-md leading-relaxed text-muted">
-              Prompt-backed content, Reddit execution, and visibility tracking. Together in one ongoing program.
-            </p>
-            <ul className="mt-6 grid gap-x-6 gap-y-2.5 border-t border-line pt-6 text-sm sm:grid-cols-2">
-              {growth.items.map((it) => (
-                <li key={it} className="flex gap-2.5">
-                  <Check aria-hidden className="mt-0.5 size-4 shrink-0 text-accent" strokeWidth={2.5} />
-                  {it}
-                </li>
-              ))}
-            </ul>
-            <p className="mt-5 text-xs leading-relaxed text-muted">
-              Post and comment volumes are planned, and depend on community rules and whether the content suits each
-              community.
-            </p>
-            <AuditCta className="mt-6 w-full sm:w-fit">Let’s get started</AuditCta>
-          </article>
-        </Reveal>
-        <Reveal delay={0.08}>
-          <article className={`flex h-full flex-col p-6 transition-shadow duration-300 hover:shadow-lift sm:p-8 ${card} !rounded-3xl`}>
-            <p className="font-mono text-xs tracking-wider text-muted">built around you.</p>
-            <h3 className="mt-3 font-display text-2xl font-bold leading-tight tracking-tight">Need more? We’ll build the right plan.</h3>
-            <p className="mt-3 text-sm leading-relaxed text-muted">
-              Some brands need broader visibility, different channels, more content, or deeper research. We’ll shape the
-              scope around what makes sense for you.
-            </p>
-            <ul className="mb-6 mt-5 space-y-2 text-sm">
-              {custom.map((it) => (
-                <li key={it} className="flex gap-2.5">
-                  <span aria-hidden className="mt-2 size-1 shrink-0 rounded-full bg-ink/40" />
-                  {it}
-                </li>
-              ))}
-            </ul>
-            <AuditCta variant="outline" className="mt-auto w-full sm:w-fit">
-              Let’s talk
-            </AuditCta>
-          </article>
-        </Reveal>
+      <Reveal className="max-w-2xl">
+        <p className="font-mono text-xs tracking-wider text-muted">pricing</p>
+        <h2 className="mt-3 font-display text-[clamp(1.75rem,3.2vw,2.6rem)] font-bold leading-[1.08] tracking-[-0.03em]">We have two plans.</h2>
+        <p className="mt-3 leading-relaxed text-muted">
+          It’s a new space, and you might not know exactly what you need yet. We won’t pretend to know either until we
+          understand your business. Let’s figure it out together.
+        </p>
+      </Reveal>
+      <div className="mt-8 grid gap-4 md:grid-cols-2">
+        {plans.map((p, i) => (
+          <Reveal key={p.name} delay={i * 0.06}>
+            <article className={`flex h-full flex-col rounded-[18px] border border-line p-6 shadow-soft transition-shadow duration-300 hover:shadow-lift sm:p-7 ${p.surface}`}>
+              <p className="font-mono text-xs tracking-wider text-muted">{p.open}</p>
+              <h3 className="mt-2 font-display text-xl font-bold tracking-tight">{p.name}</h3>
+              <p className="mt-3 font-display text-[2rem] font-bold leading-none tracking-[-0.03em]">{p.price}</p>
+              {p.text && <p className="mt-3 text-sm leading-relaxed text-muted">{p.text}</p>}
+              <ul className="mb-7 mt-5 space-y-2.5 border-t border-ink/10 pt-5 text-sm">
+                {p.items.map((it) => (
+                  <li key={it} className="flex gap-2.5">
+                    <Check aria-hidden className="mt-0.5 size-4 shrink-0 text-accent" strokeWidth={2.5} />
+                    {it}
+                  </li>
+                ))}
+              </ul>
+              <AuditCta variant={i === 0 ? "accent" : "ink"} className="mt-auto w-full">
+                {p.cta}
+              </AuditCta>
+            </article>
+          </Reveal>
+        ))}
       </div>
-      <p className="mt-4 text-xs text-muted">
-        No guaranteed citations, rankings, engagement or sales. Moderators and third-party platforms decide what appears.
-      </p>
 
-      <Reveal className="mt-8 flex flex-col gap-4 rounded-2xl bg-lav/60 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
+      <Reveal className="mt-6 flex flex-col gap-4 rounded-2xl bg-lav/60 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
         <div>
           <p className="font-display text-lg font-bold tracking-tight">Not sure where to start? Good. That’s what the audit is for.</p>
           <p className="mt-1 max-w-2xl text-sm leading-relaxed text-muted">
@@ -98,7 +70,7 @@ export function Pricing() {
           </p>
         </div>
         <AuditCta variant="ink" className="shrink-0">
-          Get a free visibility audit
+          Get a Free AI Visibility Audit
         </AuditCta>
       </Reveal>
     </section>
@@ -142,7 +114,7 @@ export async function Closing() {
           <p className="mx-auto mt-4 max-w-lg leading-relaxed text-muted">
             A few questions, a little research, and a clearer picture of what comes next.
           </p>
-          <AuditCta className="mt-7">Get your free audit</AuditCta>
+          <AuditCta className="mt-7">Get a Free AI Visibility Audit</AuditCta>
         </Reveal>
       </section>
       <footer className="bg-peach">

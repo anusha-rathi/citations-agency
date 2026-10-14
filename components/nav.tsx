@@ -23,7 +23,7 @@ export function Nav() {
         </nav>
         <div className="flex items-center gap-2">
           <AuditCta variant="ink" className="!min-h-9 !px-3.5 text-[13px] max-sm:hidden">
-            get a free audit
+            get a free AI visibility audit
           </AuditCta>
           <button
             type="button"
@@ -43,7 +43,7 @@ export function Nav() {
             {n.label}
           </a>
         ))}
-        <AuditCta className="mt-3 w-full">get a free audit</AuditCta>
+        <AuditCta className="mt-3 w-full">get a free AI visibility audit</AuditCta>
       </nav>
     </header>
   );

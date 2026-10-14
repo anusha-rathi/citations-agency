@@ -1,8 +1,7 @@
-import { Approach } from "@/components/approach";
 import { Citations } from "@/components/citations";
 import { Hero } from "@/components/hero";
 import { Nav } from "@/components/nav";
-import { Capabilities, Closing, Faq, Pricing } from "@/components/sections";
+import { Closing, Faq, Pricing } from "@/components/sections";
 import { System } from "@/components/system";
 import { Motion } from "@/components/ui";
 import { Why } from "@/components/why";
@@ -33,11 +32,9 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
-        <Approach />
         <Why />
         <System />
         <Citations />
-        <Capabilities />
         <Pricing />
         <Faq />
       </main>

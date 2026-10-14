@@ -121,7 +121,7 @@ export function AuditDialog() {
       <div className="p-6 sm:p-7">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <p className="font-mono text-xs tracking-wider text-muted">free visibility audit</p>
+            <p className="font-mono text-xs tracking-wider text-muted">free AI visibility audit</p>
             <h2 id="audit-title" className="mt-1.5 font-display text-2xl font-bold tracking-tight">
               Let’s find your opportunity.
             </h2>

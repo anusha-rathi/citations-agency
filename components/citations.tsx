@@ -44,7 +44,7 @@ export function Citations() {
     <section id="citations" className="overflow-x-clip py-16 lg:py-24">
       <div className={wrap}>
         <Head eyebrow="ai citations in action" title="Here’s what being cited actually looks like.">
-          Different questions. Different AI experiences. Real sources, mentions, and citations worth paying attention to.
+          Real sources, mentions, and citations worth paying attention to.
         </Head>
       </div>
 
@@ -58,10 +58,6 @@ export function Citations() {
           ))}
         </ul>
       </div>
-      <p className={`${wrap} mt-3 text-xs text-muted`}>
-        Screenshots from analytics dashboards. Select one to enlarge. Mentions, linked citations and search results are
-        different outcomes.
-      </p>
 
       <dialog
         ref={dialog}
