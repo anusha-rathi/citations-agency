@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight, Check } from "lucide-react";
+import { ArrowUpRight, Check, X } from "lucide-react";
 import { useState } from "react";
 import { ctaClass } from "./ui";
 
@@ -11,9 +11,9 @@ const EMAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL;
 type Status = "idle" | "sending" | "sent" | "mail" | "error";
 
 const input =
-  "mt-1.5 w-full rounded-xl border border-ink/15 bg-white px-4 py-3 text-ink placeholder:text-ink/35 transition-colors focus:border-ink focus:outline-none aria-[invalid=true]:border-accent";
+  "mt-1.5 w-full rounded-[10px] border border-ink/15 bg-white px-3.5 py-2.5 text-ink placeholder:text-ink/35 transition-colors focus:border-ink focus:outline-none aria-[invalid=true]:border-accent";
 
-export function ContactForm() {
+function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -32,8 +32,8 @@ export function ContactForm() {
     if (!ENDPOINT) {
       if (!EMAIL) return setStatus("error");
       // Fallback until the endpoint is live: hand the details to the visitor's email app.
-      const body = `Name: ${data.name}\nWork email: ${data.email}\nCompany website: ${data.website}\nLooking for: ${data.goal || "Not specified"}`;
-      window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent("Free Reddit audit request")}&body=${encodeURIComponent(body)}`;
+      const body = `Name: ${data.name}\nWork email: ${data.email}\nCompany website: ${data.website}\nNotes: ${data.notes || "-"}`;
+      window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent("Free audit request")}&body=${encodeURIComponent(body)}`;
       return setStatus("mail");
     }
 
@@ -65,12 +65,12 @@ export function ContactForm() {
 
   if (status === "sent")
     return (
-      <div role="status" className="rounded-3xl bg-paper p-8 text-ink sm:p-10">
-        <span className="grid size-12 place-items-center rounded-full bg-accent">
-          <Check aria-hidden className="size-6" strokeWidth={2.5} />
+      <div role="status" className="py-6 text-center">
+        <span className="mx-auto grid size-11 place-items-center rounded-full bg-accent">
+          <Check aria-hidden className="size-5" strokeWidth={2.5} />
         </span>
-        <h3 className="mt-6 font-display text-2xl font-bold tracking-tight">Request received.</h3>
-        <p className="mt-2 leading-relaxed text-muted">Thanks. We’ll look at your brand and reply by email.</p>
+        <p className="mt-4 font-display text-xl font-bold">Request received.</p>
+        <p className="mt-1 text-sm text-muted">We’ll take a look and reply by email.</p>
       </div>
     );
 
@@ -82,26 +82,18 @@ export function ContactForm() {
         const { name } = e.target as unknown as HTMLInputElement;
         if (errors[name]) setErrors((prev) => ({ ...prev, [name]: "" }));
       }}
-      className="space-y-4 rounded-3xl bg-paper p-6 text-ink shadow-[0_40px_80px_-40px_rgba(0,0,0,0.8)] sm:p-8"
+      className="space-y-3.5"
     >
-      <h3 className="font-display text-2xl font-bold tracking-tight">Let’s find your Reddit opportunity.</h3>
       {field("name", "Your name", { autoComplete: "name" })}
       {field("email", "Work email", { type: "email", autoComplete: "email", placeholder: "you@company.com" })}
       {field("website", "Company website", { inputMode: "url", autoComplete: "url", placeholder: "company.com", pattern: "\\S+\\.\\S+", title: "Enter a website like company.com" })}
       <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" aria-hidden className="hidden" />
       <label className="block text-sm font-medium">
-        What are you looking for? <span className="font-normal text-muted">(optional)</span>
-        <select name="goal" defaultValue="" className={input}>
-          <option value="">Select one</option>
-          <option>Build our Reddit presence</option>
-          <option>Improve existing Reddit performance</option>
-          <option>Search and AI visibility</option>
-          <option>Not sure yet</option>
-        </select>
+        Notes <span className="font-normal text-muted">(optional)</span>
+        <textarea name="notes" rows={3} className={input} placeholder="Anything we should know?" />
       </label>
-
-      <button type="submit" disabled={status === "sending"} className={`${ctaClass("accent")} !mt-6 w-full disabled:opacity-60`}>
-        {status === "sending" ? "Sending…" : "Get My Free Reddit Audit"}
+      <button type="submit" disabled={status === "sending"} className={`${ctaClass("accent")} !mt-5 w-full disabled:opacity-60`}>
+        {status === "sending" ? "Sending…" : "Get my free audit"}
         <ArrowUpRight aria-hidden className="size-4" />
       </button>
       <p role="status" aria-live="polite" className="text-sm leading-relaxed text-muted">
@@ -114,5 +106,39 @@ export function ContactForm() {
         {(status === "idle" || status === "sending") && "No generic pitch. We’ll look at your brand and its actual opportunities."}
       </p>
     </form>
+  );
+}
+
+/** The audit form, opened by any AuditCta via its id. */
+export function AuditDialog() {
+  return (
+    <dialog
+      id="audit"
+      aria-labelledby="audit-title"
+      onClick={(e) => e.target === e.currentTarget && e.currentTarget.close()}
+      className="m-auto w-[min(92vw,28rem)] rounded-3xl bg-paper p-0 text-ink outline-none backdrop:bg-ink/60 backdrop:backdrop-blur-sm"
+    >
+      <div className="p-6 sm:p-7">
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <p className="font-mono text-xs tracking-wider text-muted">free visibility audit</p>
+            <h2 id="audit-title" className="mt-1.5 font-display text-2xl font-bold tracking-tight">
+              Let’s find your opportunity.
+            </h2>
+          </div>
+          <button
+            type="button"
+            aria-label="Close"
+            onClick={(e) => (e.currentTarget.closest("dialog") as HTMLDialogElement).close()}
+            className="grid size-11 shrink-0 place-items-center rounded-[10px] border border-ink/15 hover:border-ink"
+          >
+            <X aria-hidden className="size-4" />
+          </button>
+        </div>
+        <div className="mt-5">
+          <ContactForm />
+        </div>
+      </div>
+    </dialog>
   );
 }

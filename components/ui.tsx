@@ -15,7 +15,7 @@ export function Reveal({ children, delay = 0, className }: { children: ReactNode
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, y: 24 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.6, delay, ease }}
@@ -35,7 +35,7 @@ export function Swap({ k, children, className }: { k: string | number; children:
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -6 }}
-        transition={{ duration: 0.22 }}
+        transition={{ duration: 0.25 }}
       >
         {children}
       </motion.div>
@@ -43,50 +43,31 @@ export function Swap({ k, children, className }: { k: string | number; children:
   );
 }
 
-export function Head({ eyebrow, title, children, dark }: { eyebrow: string; title: ReactNode; children?: ReactNode; dark?: boolean }) {
+export function Head({ eyebrow, title, children, dark, center }: { eyebrow?: string; title: ReactNode; children?: ReactNode; dark?: boolean; center?: boolean }) {
   return (
-    <Reveal className="max-w-4xl">
-      <p className={`font-mono text-xs uppercase tracking-widest ${dark ? "text-paper/60" : "text-muted"}`}>{eyebrow}</p>
-      <h2 className={`mt-4 ${h2}`}>{title}</h2>
-      {children && <p className={`mt-4 max-w-2xl leading-relaxed sm:text-lg ${dark ? "text-paper/70" : "text-muted"}`}>{children}</p>}
+    <Reveal className={`max-w-3xl ${center ? "mx-auto text-center" : ""}`}>
+      {eyebrow && <p className={`font-mono text-xs tracking-wider ${dark ? "text-paper/55" : "text-muted"}`}>{eyebrow}</p>}
+      <h2 className={`mt-3 ${h2}`}>{title}</h2>
+      {children && <p className={`mt-4 leading-relaxed sm:text-lg ${center ? "mx-auto" : ""} max-w-2xl ${dark ? "text-paper/65" : "text-muted"}`}>{children}</p>}
     </Reveal>
-  );
-}
-
-export function Tabs<T extends string>({
-  label, items, value, onChange, dark,
-}: { label: string; items: readonly T[]; value: T; onChange: (v: T) => void; dark?: boolean }) {
-  return (
-    <div role="tablist" aria-label={label} className="flex flex-wrap gap-1.5">
-      {items.map((it) => (
-        <button
-          key={it}
-          type="button"
-          role="tab"
-          aria-selected={it === value}
-          onClick={() => onChange(it)}
-          className={`min-h-11 rounded-full border px-4 text-sm font-medium sm:min-h-9 transition-colors duration-200 ${
-            it === value
-              ? dark ? "border-accent bg-accent text-ink" : "border-ink bg-ink text-paper"
-              : dark ? "border-paper/20 hover:border-paper/60" : "border-ink/15 hover:border-ink"
-          }`}
-        >
-          {it}
-        </button>
-      ))}
-    </div>
   );
 }
 
 const variants = {
   accent: "bg-accent text-ink hover:bg-ink hover:text-paper",
   ink: "bg-ink text-paper hover:bg-accent hover:text-ink",
-  paper: "bg-paper text-ink hover:bg-accent",
-  outline: "border border-ink/20 hover:border-ink",
+  outline: "border border-ink/15 bg-white/60 hover:border-ink",
 };
 
 export const ctaClass = (variant: keyof typeof variants = "accent") =>
-  `group inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold transition-colors duration-300 active:scale-[0.98] ${variants[variant]}`;
+  `group inline-flex min-h-11 items-center justify-center gap-2 rounded-[10px] px-5 text-sm font-semibold transition-colors duration-300 active:scale-[0.98] ${variants[variant]}`;
+
+const Arrow = ({ down }: { down?: boolean }) =>
+  down ? (
+    <ArrowDown aria-hidden className="size-4 transition-transform duration-300 group-hover:translate-y-0.5" />
+  ) : (
+    <ArrowUpRight aria-hidden className="size-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+  );
 
 export function Cta({
   href, children, variant = "accent", down, className = "",
@@ -94,11 +75,26 @@ export function Cta({
   return (
     <a href={href} className={`${ctaClass(variant)} ${className}`}>
       {children}
-      {down ? (
-        <ArrowDown aria-hidden className="size-4 transition-transform duration-300 group-hover:translate-y-0.5" />
-      ) : (
-        <ArrowUpRight aria-hidden className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-      )}
+      <Arrow down={down} />
+    </a>
+  );
+}
+
+/** Opens the audit form dialog; falls back to the #contact section without JS. */
+export function AuditCta({ children, variant = "accent", className = "" }: { children: ReactNode; variant?: keyof typeof variants; className?: string }) {
+  return (
+    <a
+      href="#contact"
+      onClick={(e) => {
+        const d = document.getElementById("audit") as HTMLDialogElement | null;
+        if (!d) return;
+        e.preventDefault();
+        d.showModal();
+      }}
+      className={`${ctaClass(variant)} ${className}`}
+    >
+      {children}
+      <Arrow />
     </a>
   );
 }

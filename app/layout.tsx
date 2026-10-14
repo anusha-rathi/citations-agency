@@ -6,9 +6,9 @@ const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
 const space = Space_Grotesk({ variable: "--font-space", subsets: ["latin"] });
 const mono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
-const title = "citations.agency — Reddit Marketing & AI Visibility Agency";
+const title = "citations.agency — AI citations, AEO & GEO through prompt-backed research";
 const description =
-  "We help brands turn real Reddit conversations into awareness, demand, and stronger visibility across ChatGPT, Perplexity, Google, and beyond.";
+  "We research the questions your buyers ask AI, find where your brand is missing, and create content that strengthens your visibility across AI answers, search results, and Reddit.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://citations.agency"),

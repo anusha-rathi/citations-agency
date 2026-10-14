@@ -1,11 +1,12 @@
-import { Advantage } from "@/components/advantage";
+import { Approach } from "@/components/approach";
+import { Citations } from "@/components/citations";
 import { Hero } from "@/components/hero";
 import { Nav } from "@/components/nav";
-import { Process } from "@/components/process";
-import { ProofOfWork } from "@/components/proof";
-import { Closing, Pricing } from "@/components/sections";
-import { Why } from "@/components/why";
+import { Capabilities, Closing, Faq, Pricing } from "@/components/sections";
+import { System } from "@/components/system";
 import { Motion } from "@/components/ui";
+import { Why } from "@/components/why";
+import { faqs } from "@/lib/content";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -14,9 +15,13 @@ const jsonLd = {
       "@type": "ProfessionalService",
       name: "citations.agency",
       url: "https://citations.agency",
-      slogan: "Be part of the conversation. Be part of the answer.",
-      description: "Full-service Reddit marketing and AI search visibility agency.",
-      knowsAbout: ["Reddit marketing", "Reddit Ads", "Generative Engine Optimization", "Answer Engine Optimization", "AI search visibility"],
+      slogan: "AI citations = prompt-backed research + content.",
+      description: "AI citations, AEO, GEO and AI SEO through prompt-backed research, content, and Reddit execution.",
+      knowsAbout: ["AI citations", "Answer Engine Optimization", "Generative Engine Optimization", "AI SEO", "Prompt research", "Reddit marketing"],
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
     },
   ],
 };
@@ -28,11 +33,13 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
+        <Approach />
         <Why />
-        <Advantage />
-        <Process />
-        <ProofOfWork />
+        <System />
+        <Citations />
+        <Capabilities />
         <Pricing />
+        <Faq />
       </main>
       <Closing />
     </Motion>

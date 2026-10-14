@@ -11,21 +11,20 @@ npm run build
 
 | What | File |
 | --- | --- |
-| Nav and pricing copy | `lib/content.ts` |
-| Example buyer searches | `lib/scenarios.ts` |
-| Proof entries | `lib/proof.ts` |
+| Nav, Reddit threads, capabilities, pricing, FAQ | `lib/content.ts` |
+| Citation gallery screenshots | `lib/evidence.ts` + `public/citations/` |
 | Section components | `components/` |
 
-## Proof
+## Citation gallery
 
-The "What the work looks like" section and its nav link are unpublished while
-`proofs` in `lib/proof.ts` is empty. To publish, add up to three real examples:
-put each screenshot in `public/proof/` and fill in `category`, `title`, `context`,
-`image`, and where available `url` and `metrics`. Only add metrics that can be verified.
+Add a screenshot to `public/citations/` and an entry in `lib/evidence.ts` with its pixel
+width and height, platform, type (`Linked citation`, `Brand mention` or `Search result`),
+a title and short context. Optional: `prompt`, `captured`, `url`. Only add screenshots of
+real results, and don't attribute a result to client work without evidence.
 
 ## Contact form
 
-The form posts JSON (`name`, `email`, `website`, `goal`) to an endpoint you configure.
+The audit form (a dialog opened by every "free audit" button) posts JSON (`name`, `email`, `website`, `notes`) to an endpoint you configure.
 Set these in Vercel → Project → Settings → Environment Variables, then redeploy:
 
 - [ ] `NEXT_PUBLIC_FORM_ENDPOINT` — any URL that accepts a JSON `POST` and returns 2xx

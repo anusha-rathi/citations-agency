@@ -4,13 +4,16 @@
   --color-paper: #f8f7f4;
   --color-ink: #171717;
   --color-accent: #ff5637;
-  --color-lav: #e8e3ff;
-  --color-violet: #5f4fe0;
-  --color-line: #e4e1da;
-  --color-muted: #66635d;
+  --color-peach: #ffe7de;
+  --color-lav: #eee9ff;
+  --color-violet: #7c6cf5;
+  --color-line: #e8e5e0;
+  --color-muted: #696969;
   --font-sans: var(--font-inter);
   --font-display: var(--font-space);
   --font-mono: var(--font-geist-mono);
+  --shadow-soft: 0 10px 35px rgba(23, 23, 23, 0.055);
+  --shadow-lift: 0 18px 48px rgba(23, 23, 23, 0.085);
 }
 
 :root {
@@ -19,7 +22,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5rem;
+  scroll-padding-top: 4.5rem;
 }
 
 body {
@@ -37,30 +40,18 @@ body {
   color: var(--color-ink);
 }
 
-/* Animated dotted connectors (Reddit → AI) */
-@utility flow-h {
-  background: repeating-linear-gradient(90deg, var(--color-accent) 0 6px, transparent 6px 14px);
-  animation: flow-h 0.9s linear infinite;
-}
-@utility flow-v {
-  background: repeating-linear-gradient(180deg, var(--color-accent) 0 6px, transparent 6px 14px);
-  animation: flow-v 0.9s linear infinite;
-}
-@keyframes flow-h {
-  to { background-position: 14px 0; }
-}
-@keyframes flow-v {
-  to { background-position: 0 14px; }
-}
 @keyframes blink {
   50% { opacity: 0; }
+}
+@keyframes marquee {
+  to { transform: translateX(-50%); }
 }
 
 /* FAQ accordion: native <details>, animated where supported */
 details::details-content {
   block-size: 0;
   overflow: clip;
-  transition: block-size 0.35s ease, content-visibility 0.35s allow-discrete;
+  transition: block-size 0.3s ease, content-visibility 0.3s allow-discrete;
 }
 details[open]::details-content {
   block-size: auto;
@@ -72,4 +63,7 @@ details[open]::details-content {
     animation: none !important;
     transition-duration: 0.01ms !important;
   }
+  /* The citation marquee becomes a plain scrollable row */
+  .marquee-wrap { overflow-x: auto !important; }
+  .marquee-dupe { display: none !important; }
 }
