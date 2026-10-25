@@ -11,7 +11,7 @@ export const post: Post = {
   dek: "ChatGPT picks brands from memory or from the pages it searches. Find out which one is costing you, then fix it with the plan for that case.",
   description: "Why ChatGPT recommends your competitor and not you: the two ways it picks brands, a 30-minute diagnosis, and the fix plan for each case.",
   targetQuery: "why chatgpt recommends my competitor",
-  status: "draft",
+  status: "published",
   published: "2026-10-25",
   updated: "2026-10-25",
   author: "Harshi Rathi",
@@ -124,6 +124,39 @@ export const post: Post = {
       t: "code",
       label: "Outreach email",
       c: "Subject: [Article title]: one option you might want to add\n\nHi [Name],\n\nI noticed your “[article title]” is one of the pages AI tools cite when people ask about [category], so it clearly gets read.\n\nIt covers [Rival A] and [Rival B] well. One gap: teams that [specific need] tend to end up with [your product], because [one concrete reason].\n\nIf you’re updating it, I can set you up with a full account to test. No pressure either way.\n\n[Name], [role], [company]",
+    },
+    { t: "h2", c: "How to get added to a list that already ranks" },
+    {
+      t: "p",
+      c: "The listicles and comparison posts ChatGPT cites are usually maintained by one writer or a small content team. They update them a few times a year, and they’re looking for reasons to. Make it easy:",
+    },
+    {
+      t: "ul",
+      items: [
+        "<strong>Find the right person.</strong> The byline on the article, then their LinkedIn or the site’s contact page. Avoid generic “info@” addresses.",
+        "<strong>Lead with their gap, not your product.</strong> A buyer type, use case or price point the list doesn’t cover yet.",
+        "<strong>Give them something to write.</strong> One concrete fact they can put straight into the article: your starting price, a limit, an integration nobody else has.",
+        "<strong>Offer access, not money.</strong> A full account to test. Paid placements tend to get labelled or removed, and readers trust them less.",
+        "<strong>Follow up once, a week later.</strong> Then move on to the next page on your list.",
+      ],
+    },
+    {
+      t: "p",
+      c: "Track every pitch in the same sheet as your prompts. When a page adds you, note the date and watch for it showing up in AI answers over the following weeks.",
+    },
+    { t: "h2", c: "What to put on your own comparison page" },
+    {
+      t: "p",
+      c: "When the rival ChatGPT keeps naming has no fair comparison against you anywhere, write one. Structure it so a model can lift the answer straight out:",
+    },
+    {
+      t: "code",
+      label: "[You] vs [Rival] page outline",
+      c: "1. Verdict in two sentences: who should pick [Rival], who should pick [You]\n2. Table: price, seats, setup time, key features, integrations, support\n3. Where [Rival] is the better choice (be specific and honest)\n4. Where [You] is the better choice\n5. Cost at 5, 20 and 50 seats, with the month you checked prices\n6. How to switch from [Rival], and how long it takes\n7. FAQ: the five questions buyers ask in sales calls",
+    },
+    {
+      t: "p",
+      c: "Section 3 matters most. A comparison that admits where the rival wins reads as advice. One that doesn’t reads as an ad, and gets treated like one.",
     },
     { t: "h2", c: "The memory plan: when the model already “knows” them (months 1–6)" },
     {

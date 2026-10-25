@@ -12,6 +12,16 @@ export const buckets = {
   buying: "Buying Guides",
 } as const;
 
+export const bucketIntro: Record<keyof typeof buckets, string> = {
+  basics: "How AI search works, and what it changes about SEO.",
+  cited: "Getting named and cited by ChatGPT, Perplexity and AI Overviews, and tracking it.",
+  technical: "Crawlers, robots.txt, rendering and the files that do and don’t matter.",
+  reddit: "Posting, commenting and growing on Reddit without getting removed.",
+  research: "Original data on what AI search actually cites.",
+  industry: "Playbooks for specific categories.",
+  buying: "Pricing, agencies and tools, for when you’re ready to buy.",
+};
+
 export type Style = "RS Playbook" | "RS Answer" | "Data post" | "Verdict post" | "Comparison";
 export type SourceType = "vendor" | "forum" | "primary" | "platform" | "press" | "reviews" | "ours";
 

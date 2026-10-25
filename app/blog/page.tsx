@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/sections";
-import { buckets, fmtDate, livePosts, readMinutes } from "@/lib/blog";
+import { bucketIntro, buckets, fmtDate, initials, livePosts, readMinutes, type Post } from "@/lib/blog";
 import { wrap } from "@/lib/styles";
 
 export const metadata: Metadata = {
@@ -12,6 +12,10 @@ export const metadata: Metadata = {
 
 export default function BlogIndex() {
   const posts = livePosts();
+  // Buckets in their defined order, only those with posts.
+  const groups = (Object.keys(buckets) as (keyof typeof buckets)[])
+    .map((k) => [k, posts.filter((p) => p.bucket === k)] as [keyof typeof buckets, Post[]])
+    .filter(([, list]) => list.length > 0);
   return (
     <>
       <Nav />
@@ -27,25 +31,38 @@ export default function BlogIndex() {
         {posts.length === 0 ? (
           <p className="mt-14 border-t border-line pt-8 text-muted">The first posts are being written.</p>
         ) : (
-          <ul className="mt-12 divide-y divide-line border-y border-line">
-            {posts.map((p) => (
-              <li key={p.slug}>
-                <a href={`/blog/${p.slug}`} className="group grid gap-2 py-6 sm:grid-cols-[10rem_1fr] sm:gap-8">
-                  <span className="font-mono text-xs leading-6 text-muted">
-                    {buckets[p.bucket]}
-                    {p.status === "draft" && <span className="ml-2 rounded bg-accent px-1.5 text-ink">draft</span>}
-                  </span>
-                  <span>
-                    <span className="block font-display text-xl font-bold leading-snug tracking-tight transition-colors group-hover:text-accent">{p.title}</span>
-                    <span className="mt-1.5 block leading-relaxed text-muted">{p.dek}</span>
-                    <span className="mt-2 block font-mono text-[11px] text-muted">
-                      Updated {fmtDate(p.updated)} · {readMinutes(p)} min read
-                    </span>
-                  </span>
+          <>
+            <nav aria-label="Categories" className="mt-10 flex flex-wrap gap-2">
+              {groups.map(([key, list]) => (
+                <a key={key} href={`#${key}`} className="rounded-full border border-line bg-white px-3.5 py-1.5 text-sm font-medium shadow-soft transition-colors hover:border-ink">
+                  {buckets[key]} <span className="text-muted">{list.length}</span>
                 </a>
-              </li>
+              ))}
+            </nav>
+            {groups.map(([key, list]) => (
+              <section key={key} id={key} className="mt-14 scroll-mt-24">
+                <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-line pb-3">
+                  <h2 className="font-display text-2xl font-bold tracking-tight">{buckets[key]}</h2>
+                  <p className="text-sm text-muted">{bucketIntro[key]}</p>
+                </div>
+                <ul className="mt-5 grid gap-4 md:grid-cols-2">
+                  {list.map((p) => (
+                    <li key={p.slug}>
+                      <a href={`/blog/${p.slug}`} className="group flex h-full flex-col rounded-2xl border border-line bg-white p-5 shadow-soft transition-shadow hover:shadow-lift">
+                        {p.status === "draft" && <span className="mb-2 w-fit rounded bg-accent px-1.5 font-mono text-xs text-ink">draft</span>}
+                        <span className="font-display text-lg font-bold leading-snug tracking-tight transition-colors group-hover:text-accent">{p.title}</span>
+                        <span className="mt-2 text-sm leading-relaxed text-muted">{p.dek}</span>
+                        <span className="mt-auto flex items-center gap-2 pt-4 text-xs text-muted">
+                          <span aria-hidden className="grid size-6 place-items-center rounded-full bg-ink text-[10px] font-bold text-paper">{initials(p.author)}</span>
+                          {p.author} · {readMinutes(p)} min read · {fmtDate(p.updated)}
+                        </span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </section>
             ))}
-          </ul>
+          </>
         )}
       </main>
       <Footer />

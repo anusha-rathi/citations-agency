@@ -25,7 +25,7 @@ me but end up telling the whole world". So:
 - **Actionable everywhere.** Every H2 leaves the reader with something to do: steps,
   checklists, templates, example copy, thresholds ("by week 4 you should have…"), tables to
   copy, a "Don't do this" box, a mistakes list, what to measure.
-- **Length:** RS Playbook 2,000–3,000 words, RS Answer 1,200–1,800, Data/Verdict 1,500–2,500.
+- **Length:** every post 2,100–2,500 words, whatever the style (Anusha, 25 Oct 2026). Length comes from more useful sections, never padding.
 - **Sources inline only.** Link a stat to its source where it's used; attribute a quote at the
   quote. No sources list at the end. Caveats about a source's motives, unseen data or our
   method go in the research file or to Anusha in chat, never in the post.

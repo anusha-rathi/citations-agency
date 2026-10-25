@@ -13,7 +13,7 @@ export const post: Post = {
   dek: "Be reachable, answer the exact question a buyer asked, and get named on the pages ChatGPT already trusts. A 12-week plan with checklists, templates and what to measure.",
   description: "How to get cited by ChatGPT in 2026: a 12-week playbook covering crawler access, prompt research, the pages that get cited, earned mentions and tracking.",
   targetQuery: "how to get cited by chatgpt",
-  status: "draft",
+  status: "published",
   published: "2026-10-25",
   updated: "2026-10-25",
   author: "Harshi Rathi",

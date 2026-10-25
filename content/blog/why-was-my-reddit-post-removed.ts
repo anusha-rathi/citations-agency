@@ -11,7 +11,7 @@ export const post: Post = {
   dek: "Most Reddit removals come from automatic filters, not a person reading your post. Here’s how to tell which one caught you, fix it, and post so it doesn’t happen again.",
   description: "Why was my Reddit post removed? The 10 causes, from AutoModerator and karma limits to Crowd Control and spam filters, how to tell which, and how to fix it.",
   targetQuery: "why was my reddit post removed",
-  status: "draft",
+  status: "published",
   published: "2026-10-25",
   updated: "2026-10-25",
   author: "Vijay Singh",
@@ -160,6 +160,41 @@ export const post: Post = {
         "Explain briefly what you were doing and why you think it’s a mistake.",
         "Wait for a reply. Don’t create a new account to get around it: Reddit’s <a href=\"" + help("15484544471444", "Ban-evasion-filter") + "\">ban evasion filter</a> links accounts through signals like how you connect to Reddit.",
       ],
+    },
+    { t: "h2", c: "How to write a post that stays up" },
+    {
+      t: "p",
+      c: "Filters catch accounts, but moderators and readers judge the post itself. Posts that survive and do well in business and tech communities tend to share the same shape.",
+    },
+    {
+      t: "p",
+      c: "<strong>A title that’s a real question or a specific result.</strong> Compare:",
+    },
+    {
+      t: "table",
+      head: ["Gets removed or ignored", "Gets read"],
+      rows: [
+        ["“Check out our new CRM!”", "“How do 5-person sales teams keep a CRM updated without hating it?”"],
+        ["“The ultimate guide to cold email”", "“We sent 4,000 cold emails last quarter. Here’s what got replies”"],
+        ["“Best tool for X?? (link inside)”", "“Moving off spreadsheets for client onboarding. What did you switch to?”"],
+      ],
+    },
+    {
+      t: "p",
+      c: "<strong>A body that’s useful on its own.</strong> Open with the context in two or three sentences, give the details people need to answer or learn something, and end with a specific question. If your post only works when someone clicks a link, it reads as promotion.",
+    },
+    {
+      t: "p",
+      c: "<strong>A disclosure line when you mention your company.</strong> Put it where people will see it, not buried at the end:",
+    },
+    {
+      t: "code",
+      label: "Disclosure lines that work",
+      c: "Disclosure: I’m the founder of [company], which does [one line]. Not linking it here.\n\nFull disclosure, I work at [company]. Happy to share what we learned either way.\n\n(I build [product], so I’m biased. Here’s what I’d tell a friend.)",
+    },
+    {
+      t: "p",
+      c: "<strong>Timing and follow-through.</strong> Post when the community is active, then stay for the first hour and reply to every comment. A post where the author answers questions looks, to mods and readers alike, like someone participating, which is exactly what Reddit’s rules ask for.",
     },
     { t: "h2", c: "Your pre-post checklist" },
     {

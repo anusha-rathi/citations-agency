@@ -12,7 +12,7 @@ export const post: Post = {
   dek: "On your own website it’s mostly the same work. The real differences are off-site, in prompts instead of keywords, and in how you measure. Here’s what to change, and what to keep.",
   description: "AEO vs GEO vs SEO in 2026: what each means, what stays the same, the 3 differences that change your plan, and a 90-day plan to cover all three.",
   targetQuery: "aeo vs geo vs seo",
-  status: "draft",
+  status: "published",
   published: "2026-10-25",
   updated: "2026-10-25",
   author: "Harshi Rathi",
@@ -151,6 +151,25 @@ export const post: Post = {
     {
       t: "p",
       c: "A practical routine: keep a list of your 10 most important answer pages, put a quarterly reminder in the calendar, and on each pass update prices, screenshots and anything a competitor has changed. Change the visible “updated” date only when the content genuinely changed. A page that says it was updated yesterday but still quotes last year’s prices does more harm than an honest older date.",
+    },
+    { t: "h2", c: "Do you need a different plan for each AI engine?" },
+    {
+      t: "p",
+      c: "Mostly no, but they don’t behave identically. In the Toronto study, each engine overlapped Google’s top 10 results to a different degree, and leaned on different kinds of sources:",
+    },
+    {
+      t: "table",
+      head: ["Engine", "Overlap with Google’s top 10", "Leans on", "What that means for you"],
+      rows: [
+        ["Perplexity", "15.2%", "A mix of independent and brand sites", "Good SEO pages carry over best here"],
+        ["Claude", "12.6%", "Independent media and reviews (64.5%)", "Third-party coverage matters most"],
+        ["Gemini", "11.1%", "Brand and independent sites roughly equally", "Your own answer pages count more"],
+        ["GPT-4o", "4.0%", "Independent media and reviews (56.9%)", "Rankings alone won’t get you in"],
+      ],
+    },
+    {
+      t: "p",
+      c: "The practical takeaway: one plan covers all of them, as long as it includes both strong answer pages on your site and mentions on independent sites. Test your prompts in at least ChatGPT and Perplexity each month, because they often disagree, and the gaps between them show you which half of the plan needs work.",
     },
     { t: "h2", c: "How to split your time" },
     {

@@ -57,8 +57,8 @@ function check(p: Post) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(p.updated)) fail.push("H26 missing updated date");
 
   // README O0: length and actionability
-  const floor = { "RS Playbook": 2000, "RS Answer": 1200, "Data post": 1500, "Verdict post": 1500, Comparison: 2500 }[p.style];
-  if (words(p) < floor) fail.push(`O0 ${words(p)} words; ${p.style} needs ${floor}+`);
+  if (words(p) < 2100) fail.push(`O0 ${words(p)} words; posts need 2,100–2,500`);
+  if (words(p) > 2600) warn.push(`O0 ${words(p)} words; aim for 2,100–2,500`);
   const steps = p.body.filter((b) => b.t === "ol" || b.t === "code" || (b.t === "table")).length;
   if (steps < 3) fail.push(`O0 only ${steps} actionable blocks (numbered steps, templates or tables); aim for 3+`);
 

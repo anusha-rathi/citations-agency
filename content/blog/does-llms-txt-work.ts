@@ -9,7 +9,7 @@ export const post: Post = {
   dek: "llms.txt doesn’t get you cited in AI search. Here’s the data, the one kind of site that should still ship it, and the 30-minute checklist that actually helps.",
   description: "Does llms.txt work for AI search? Four studies say AI crawlers rarely fetch it. Who should still use it, and the 30-minute checklist that actually helps.",
   targetQuery: "does llms.txt work",
-  status: "draft",
+  status: "published",
   published: "2026-10-25",
   updated: "2026-10-25",
   author: "Harshi Rathi",
@@ -47,6 +47,24 @@ export const post: Post = {
       t: "p",
       c: "It’s easy to confuse with robots.txt, but they do different jobs. robots.txt tells crawlers what they’re allowed to fetch, and AI search crawlers obey it. llms.txt can’t allow or block anything. It only suggests what to read, to whatever chooses to look.",
     },
+    { t: "h2", c: "llms.txt vs robots.txt vs sitemap.xml" },
+    {
+      t: "p",
+      c: "Three files sit at the root of most sites and they’re easy to mix up. Only two of them affect whether AI search can use your pages:",
+    },
+    {
+      t: "table",
+      head: ["File", "What it does", "Read by AI search?", "Do you need it?"],
+      rows: [
+        ["robots.txt", "Tells crawlers what they may and may not fetch", "Yes. OAI-SearchBot, PerplexityBot and Googlebot all follow it", "Yes, and check it allows AI search crawlers"],
+        ["sitemap.xml", "Lists the pages you want indexed and when they changed", "Indirectly, through Google and Bing indexing", "Yes, submit it to both"],
+        ["llms.txt", "Suggests which pages an AI model should read", "Rarely, according to every study so far", "Only for docs and developer tools"],
+      ],
+    },
+    {
+      t: "p",
+      c: "If you only have time for one, fix robots.txt. A single wrong line there can hide your whole site from ChatGPT search. A missing llms.txt costs you nothing.",
+    },
     { t: "h2", c: "What the data shows" },
     {
       t: "table",
@@ -76,6 +94,29 @@ export const post: Post = {
     {
       t: "p",
       c: "OpenAI’s crawler documentation explains why the file doesn’t help with ChatGPT either. ChatGPT search relies on <a href=\"https://developers.openai.com/api/docs/bots\">OAI-SearchBot</a>, which respects robots.txt and has nothing to do with llms.txt. The OpenAI bot that did show up most in Ahrefs’ llms.txt data was GPTBot, which collects training data. A GPTBot visit doesn’t put you in a ChatGPT answer.",
+    },
+    { t: "h2", c: "How AI search actually finds your pages" },
+    {
+      t: "p",
+      c: "If AI search crawlers aren’t reading llms.txt, how do they find your content? Through the same plumbing search has always used, with a few new names on the guest list.",
+    },
+    {
+      t: "table",
+      head: ["Engine", "How it finds pages", "What you control"],
+      rows: [
+        ["ChatGPT search", "OpenAI’s own crawler, OAI-SearchBot, plus third-party search partners including Microsoft", "robots.txt rules for OAI-SearchBot; Bing indexing"],
+        ["Google AI Overviews and AI Mode", "Google’s normal index, using “query fan-out” to run several related searches per answer", "Indexing, snippet eligibility, answer-first pages"],
+        ["Microsoft Copilot", "Bing’s index", "Bing Webmaster Tools, IndexNow"],
+        ["Perplexity", "Its own crawler, PerplexityBot, plus search results", "robots.txt rules for PerplexityBot"],
+      ],
+    },
+    {
+      t: "p",
+      c: "Notice what every row has in common: robots.txt and a search index. That’s where an afternoon of technical work pays off. A page that’s blocked, missing from Bing, or invisible without JavaScript can’t be cited, no matter how good your llms.txt is.",
+    },
+    {
+      t: "p",
+      c: "Bing deserves special attention because it feeds two of the four. Verifying your site in Bing Webmaster Tools also gives you its AI Performance report, which shows how often Microsoft Copilot cites your pages. It’s free and takes about ten minutes.",
     },
     { t: "h2", c: "Who actually publishes one: we checked 33 sites" },
     {
@@ -113,6 +154,22 @@ export const post: Post = {
       t: "p",
       c: "If you do ship one, generate it automatically from your docs or sitemap so it never goes stale. A hand-maintained llms.txt that drifts out of date is worse than none.",
     },
+    { t: "h2", c: "If you run docs: how to ship llms.txt properly" },
+    {
+      t: "p",
+      c: "For documentation sites the file is worth having, so do it well. Developers paste it into tools like Cursor, Claude Code or ChatGPT to give the assistant your docs, and a clean file means the assistant writes better code against your API.",
+    },
+    {
+      t: "ol",
+      items: [
+        "<strong>Generate it from your docs, don’t hand-write it.</strong> Most documentation platforms and static site generators can build it from your navigation or sitemap on every deploy.",
+        "<strong>Lead with one line on what your product does,</strong> then sections for getting started, core concepts, API reference and SDKs.",
+        "<strong>Link to clean Markdown versions</strong> of each page where you can. Assistants handle Markdown far better than HTML full of navigation.",
+        "<strong>Add an llms-full.txt</strong> with the full text of your docs in one file, for developers who want to paste everything at once.",
+        "<strong>Mention it in your docs</strong> (“Using an AI assistant? Point it at /llms.txt”). The people who benefit most won’t find it otherwise.",
+        "<strong>Check it after every major docs change.</strong> Broken links in a file meant for machines are easy to miss.",
+      ],
+    },
     { t: "h2", c: "How to check whether anything reads your llms.txt" },
     {
       t: "p",
@@ -126,6 +183,10 @@ export const post: Post = {
     {
       t: "p",
       c: "On Vercel, filter Logs by the path <code>/llms.txt</code>. On Cloudflare, use Security → Analytics and filter by path. An empty result after a month is normal.",
+    },
+    {
+      t: "p",
+      c: "While you’re in the logs, run the same check for the crawlers that do matter. Search for <code>OAI-SearchBot</code>, <code>PerplexityBot</code> and <code>Bingbot</code>. If they’re visiting your key pages, your access is fine. If they’re missing, or getting 403 errors, that’s a far bigger problem than any llms.txt, and it’s usually a CDN bot setting.",
     },
     { t: "h2", c: "What actually decides whether AI cites you" },
     {
