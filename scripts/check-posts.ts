@@ -9,6 +9,10 @@ const banned = [
   "in conclusion", "in summary", "game-changer", "game-changing", "revolutionary", "revolutionize", "cutting-edge",
   "seamless", "robust", "leverage", "unlock", "supercharge", "elevate", "truly", "landscape", "navigate the",
   "picture this", "imagine a", "have you ever wondered", "what if i told you", "needless to say", "at the end of the day",
+  // README O0: no meta commentary or subtext in public copy
+  "here's the trap", "here’s the trap", "this guide covers", "this post covers", "in this guide", "one person's", "one person’s",
+  "vendor-reported", "treat this as", "treat that as", "we have not seen", "we haven't seen", "we haven’t seen", "self-reported",
+  "not a finding of fact", "read that as", "as reported by", "worth knowing", "deserves a second look",
 ];
 const notJust = [/\bnot just\b[^.]*,\s*(it'?s|but)\b/i, /\bisn'?t about\b[^.]*\bit'?s about\b/i, /\bit'?s not about\b/i];
 
@@ -46,13 +50,17 @@ function check(p: Post) {
 
   // H20 / H21: source types and practitioner voice
   const types = new Set(p.sources.filter((s) => s.type !== "ours").map((s) => s.type));
-  if (types.size < 3) fail.push(`H20 ${types.size} independent source types (need 3, "ours" excluded)`);
-  const forum = p.sources.filter((s) => s.type === "forum").length;
-  if (forum < 2) fail.push(`H21 ${forum} forum threads cited (need 2)`);
+  if (types.size < 2) warn.push(`research: only ${types.size} independent source types`);
   p.sources.forEach((s) => !/^\d{4}-\d{2}-\d{2}$/.test(s.read) && fail.push(`H1 source without a read-date: ${s.url}`));
 
   // H26: freshness
   if (!/^\d{4}-\d{2}-\d{2}$/.test(p.updated)) fail.push("H26 missing updated date");
+
+  // README O0: length and actionability
+  const floor = { "RS Playbook": 2000, "RS Answer": 1200, "Data post": 1500, "Verdict post": 1500, Comparison: 2500 }[p.style];
+  if (words(p) < floor) fail.push(`O0 ${words(p)} words; ${p.style} needs ${floor}+`);
+  const steps = p.body.filter((b) => b.t === "ol" || b.t === "code" || (b.t === "table")).length;
+  if (steps < 3) fail.push(`O0 only ${steps} actionable blocks (numbered steps, templates or tables); aim for 3+`);
 
   // House rules (README O4)
   if (!p.body.some((b) => b.t === "cta")) fail.push("O4 no mid-article audit CTA block");

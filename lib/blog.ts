@@ -25,6 +25,8 @@ export type Block =
   | { t: "callout"; tone: "tldr" | "answer" | "short" | "dont" | "note"; title?: string; c?: string; items?: string[] }
   | { t: "img"; src: string; alt: string; width: number; height: number; caption?: string }
   | { t: "quote"; c: string; cite: string; href?: string }
+  /** Copyable text: robots.txt rules, templates, example messages. Rendered verbatim. */
+  | { t: "code"; c: string; label?: string }
   | { t: "cta" };
 
 export type Post = {
@@ -46,6 +48,7 @@ export type Post = {
   takeaways?: string[];
   body: Block[];
   faqs: { q: string; a: string }[];
+  /** Internal research record only. Never rendered: sources are linked inline in the copy (README O0). */
   sources: { title: string; url: string; type: SourceType; read: string }[];
   related?: string[];
   /** Problem-specific CTA copy. `mid` sits in the body's { t: "cta" } block; title/text/button make the end box. */
@@ -78,3 +81,5 @@ export const slugify = (s: string) => strip(s).toLowerCase().replace(/[^a-z0-9]+
 
 export const fmtDate = (iso: string) =>
   new Date(`${iso}T00:00:00Z`).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
+
+export const initials = (name: string) => name.split(" ").map((w) => w[0]).join("").slice(0, 2).toUpperCase();

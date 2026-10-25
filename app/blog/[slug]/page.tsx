@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { ArrowUpRight, Plus } from "lucide-react";
+import { ChevronRight, Plus } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/sections";
 import { AuditCta } from "@/components/ui";
-import { buckets, fmtDate, getPost, livePosts, readMinutes, slugify, type Block, type Post } from "@/lib/blog";
+import { buckets, fmtDate, getPost, initials, livePosts, readMinutes, slugify, type Block, type Post } from "@/lib/blog";
 import { wrap } from "@/lib/styles";
 
 // Cache Components needs at least one param; "_" renders a 404 until the first post exists.
@@ -92,6 +92,13 @@ function Render({ b, p }: { b: Block; p: Post }) {
           <cite className="mt-1 block text-sm not-italic text-muted">{b.href ? <a href={b.href} target="_blank" rel="noopener noreferrer">{b.cite}</a> : b.cite}</cite>
         </blockquote>
       );
+    case "code":
+      return (
+        <figure className="not-prose">
+          {b.label && <figcaption className="mb-1.5 font-mono text-[11px] uppercase tracking-wider text-muted">{b.label}</figcaption>}
+          <pre className="overflow-x-auto whitespace-pre-wrap rounded-xl border border-line bg-white p-4 font-mono text-[13.5px] leading-relaxed text-ink">{b.c}</pre>
+        </figure>
+      );
     case "cta":
       return (
         <aside className="flex flex-col gap-3 rounded-2xl bg-lav/60 p-5 sm:flex-row sm:items-center sm:justify-between">
@@ -124,21 +131,28 @@ export default async function PostPage({ params }: PageProps<"/blog/[slug]">) {
   if (!p) notFound();
   const related = (p.related ?? []).map((s) => getPost(s)).filter((x): x is Post => !!x);
 
+  const toc = p.body.filter((b): b is Extract<Block, { t: "h2" }> => b.t === "h2");
+
   return (
     <>
       <Nav />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd(p)).replace(/</g, "\\u003c") }} />
-      <main className={`${wrap} py-12 lg:py-16`}>
-        <article className="mx-auto max-w-[720px]">
-          <p className="font-mono text-xs tracking-wider text-muted">
-            <Link href="/blog" className="hover:text-ink">blog</Link> / {buckets[p.bucket].toLowerCase()}
-            {p.status === "draft" && <span className="ml-2 rounded bg-accent px-1.5 text-ink">draft</span>}
+      <main className={`${wrap} grid gap-12 py-10 lg:grid-cols-[minmax(0,1fr)_260px] lg:gap-16 lg:py-14`}>
+        <article className="min-w-0 max-w-[720px]">
+          <p className="flex items-center gap-1.5 text-sm text-muted">
+            <Link href="/blog" className="hover:text-ink">Blog</Link>
+            <ChevronRight aria-hidden className="size-3.5" />
+            <span className="font-medium text-ink">{buckets[p.bucket]}</span>
+            {p.status === "draft" && <span className="ml-2 rounded bg-accent px-1.5 font-mono text-xs text-ink">draft</span>}
           </p>
           <h1 className="mt-4 font-display text-[clamp(1.9rem,4vw,2.75rem)] font-bold leading-[1.08] tracking-[-0.03em]">{p.title}</h1>
-          <p className="mt-4 text-lg leading-relaxed text-muted" {...html(p.dek)} />
-          <p className="mt-5 border-b border-line pb-5 font-mono text-xs text-muted">
-            {p.author} · Updated {fmtDate(p.updated)} · {readMinutes(p)} min read
-          </p>
+          <div className="mt-6 flex items-center gap-3">
+            <span aria-hidden className="grid size-10 place-items-center rounded-full bg-ink font-display text-sm font-bold text-paper">{initials(p.author)}</span>
+            <span className="text-sm leading-tight">
+              <span className="block font-semibold">{p.author}</span>
+              <span className="text-muted">Updated {fmtDate(p.updated)} · {readMinutes(p)} min read</span>
+            </span>
+          </div>
 
           {p.takeaways && (
             <aside className="mt-8 rounded-2xl border border-line bg-white p-5 shadow-soft">
@@ -168,44 +182,48 @@ export default async function PostPage({ params }: PageProps<"/blog/[slug]">) {
             </section>
           )}
 
-          {related.length > 0 && (
-            <section className="mt-14">
-              <h2 className="font-display text-xl font-bold tracking-tight">Keep learning</h2>
-              <ul className="mt-4 grid gap-3 sm:grid-cols-3">
-                {related.map((r) => (
-                  <li key={r.slug}>
-                    <a href={`/blog/${r.slug}`} className="block h-full rounded-xl border border-line bg-white p-4 text-sm font-semibold leading-snug shadow-soft transition-shadow hover:shadow-lift">
-                      {r.title}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
-
           <aside className="mt-14 rounded-2xl bg-[linear-gradient(135deg,#FFE7DE,#F8F7F4)] p-6 text-center sm:p-8">
             <p className="font-display text-xl font-bold tracking-tight">{p.cta.title}</p>
             <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-muted" {...html(p.cta.text)} />
             <AuditCta className="mt-5">{p.cta.button}</AuditCta>
           </aside>
 
-          {p.sources.length > 0 && (
-            <section className="mt-12 border-t border-line pt-6">
-              <h2 className="font-mono text-xs uppercase tracking-wider text-muted">Sources</h2>
-              <ol className="mt-3 space-y-1.5 text-sm">
-                {p.sources.map((s) => (
-                  <li key={s.url}>
-                    <a href={s.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-start gap-1 hover:text-accent">
-                      {s.title}
-                      <ArrowUpRight aria-hidden className="mt-0.5 size-3.5 shrink-0" />
-                    </a>
-                    <span className="text-muted"> · read {fmtDate(s.read)}</span>
+          {related.length > 0 && (
+            <section className="mt-14">
+              <h2 className="font-display text-xl font-bold tracking-tight">Keep learning</h2>
+              <ul className="mt-4 grid gap-3 sm:grid-cols-3">
+                {related.map((r) => (
+                  <li key={r.slug}>
+                    <Link href={`/blog/${r.slug}`} className="block h-full rounded-xl border border-line bg-white p-4 shadow-soft transition-shadow hover:shadow-lift">
+                      <span className="font-mono text-[11px] text-muted">{buckets[r.bucket]}</span>
+                      <span className="mt-1 block text-sm font-semibold leading-snug">{r.title}</span>
+                    </Link>
                   </li>
                 ))}
-              </ol>
+              </ul>
             </section>
           )}
         </article>
+
+        <aside className="hidden lg:block">
+          <div className="sticky top-24 space-y-6">
+            <nav aria-label="On this page">
+              <p className="font-mono text-[11px] font-semibold uppercase tracking-wider text-muted">On this page</p>
+              <ul className="mt-3 space-y-2.5 border-l border-line pl-4 text-[13px] leading-snug">
+                {toc.map((h) => (
+                  <li key={h.c}>
+                    <a href={`#${h.id ?? slugify(h.c)}`} className="text-ink/70 transition-colors hover:text-ink" {...html(h.c)} />
+                  </li>
+                ))}
+              </ul>
+            </nav>
+            <div className="rounded-2xl border border-line bg-white p-4 shadow-soft">
+              <p className="font-display font-bold">citations<span className="text-accent">.agency</span></p>
+              <p className="mt-1.5 text-[13px] leading-relaxed text-muted" {...html(p.cta.mid)} />
+              <AuditCta variant="ink" className="mt-3 w-full !min-h-10 text-[13px]">{p.cta.button}</AuditCta>
+            </div>
+          </div>
+        </aside>
       </main>
       <Footer />
     </>

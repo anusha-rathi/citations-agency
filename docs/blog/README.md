@@ -15,6 +15,26 @@ This file is senior to all of them. Where they disagree, the overrides below dec
 
 ## Overrides for citations.agency
 
+**O0. The model is redship.io (added 25 Oct 2026, senior to everything below and to the
+imported files).** Anusha rejected the first five drafts as "written to show how the blog is
+written, not to help", "very short", "no actionable things", with "subtext you want to tell
+me but end up telling the whole world". So:
+
+- **Help, don't perform.** Direct second-person advice in a confident voice. No openers like
+  "Here's the trap", no "this guide covers…", no commentary on our own sources or method.
+- **Actionable everywhere.** Every H2 leaves the reader with something to do: steps,
+  checklists, templates, example copy, thresholds ("by week 4 you should have…"), tables to
+  copy, a "Don't do this" box, a mistakes list, what to measure.
+- **Length:** RS Playbook 2,000–3,000 words, RS Answer 1,200–1,800, Data/Verdict 1,500–2,500.
+- **Sources inline only.** Link a stat to its source where it's used; attribute a quote at the
+  quote. No sources list at the end. Caveats about a source's motives, unseen data or our
+  method go in the research file or to Anusha in chat, never in the post.
+- **Still never invent.** Facts and numbers come from real sources; recommendations ("aim for
+  20–30 prompts") are clearly advice.
+
+The imported rules about provenance commentary (ai-sdr H25, H27 attribution verbs, the
+"what this page does not know" form, the forum-thread minimums) are overridden by O0.
+
 **O1. Never write a section about the page itself.** aicustomerservice banned this on
 18 Sep 2026 after reading rendered posts, and that ruling beats ai-sdr's H25. So: no
 "what this page does not know", "our method", "check it yourself" sections. Honesty is
