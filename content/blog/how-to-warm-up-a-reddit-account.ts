@@ -11,7 +11,7 @@ export const post: Post = {
   dek: "New accounts get filtered everywhere that matters. This 30-day plan builds real karma and history the way Reddit’s own systems reward, so your posts stay up when it counts.",
   description: "How to warm up a new Reddit account in 30 days: setup, daily comment targets, which subreddits to start in, and what gets accounts flagged. No shortcuts.",
   targetQuery: "how to warm up a reddit account",
-  status: "draft",
+  status: "published",
   published: "2026-10-25",
   updated: "2026-10-25",
   author: "Vijay Singh",

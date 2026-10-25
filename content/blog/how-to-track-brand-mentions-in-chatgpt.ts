@@ -12,7 +12,7 @@ export const post: Post = {
   dek: "A monthly prompt sheet, three free reports and one survey question tell you whether ChatGPT names you, links you, and sends you buyers. Here’s the full setup.",
   description: "How to track brand mentions in ChatGPT for free: a monthly prompt sheet, GA4 setup for ChatGPT traffic, Bing’s AI Performance report, and when to pay.",
   targetQuery: "how to track brand mentions in chatgpt",
-  status: "draft",
+  status: "published",
   published: "2026-10-25",
   updated: "2026-10-25",
   author: "Harshi Rathi",

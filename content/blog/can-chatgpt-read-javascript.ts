@@ -12,7 +12,7 @@ export const post: Post = {
   dek: "ChatGPT’s crawlers fetch your JavaScript files but don’t run them. If your content only appears after JavaScript loads, AI search sees an empty page. Here’s how to check, and how to fix it.",
   description: "Can ChatGPT read JavaScript? No: its crawlers don’t run it. A 2-minute test to see what AI crawlers see on your site, and how to fix it by framework.",
   targetQuery: "can chatgpt read javascript",
-  status: "draft",
+  status: "published",
   published: "2026-10-25",
   updated: "2026-10-25",
   author: "Harshi Rathi",

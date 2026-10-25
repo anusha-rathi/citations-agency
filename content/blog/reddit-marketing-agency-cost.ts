@@ -12,7 +12,7 @@ export const post: Post = {
   dek: "Reddit marketing agencies charge from about $500 to $12,500 a month, plus ad spend if you run ads. What each price level actually buys, what to ask for in writing, and how to budget.",
   description: "How much does Reddit marketing cost in 2026? Agency retainers from $500 to $12,500 a month, what each tier includes, ads costs, red flags and how to budget.",
   targetQuery: "reddit marketing agency cost",
-  status: "draft",
+  status: "published",
   published: "2026-10-25",
   updated: "2026-10-25",
   author: "Harshi Rathi",

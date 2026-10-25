@@ -12,7 +12,7 @@ export const post: Post = {
   dek: "Keyword research tells you what people type into Google. Prompt research tells you what they ask ChatGPT, and which page you need to be the answer. A 6-step method with templates.",
   description: "Prompt research for AI search: a 6-step method to turn keywords, sales calls and Reddit threads into the buyer prompts you need to rank and get cited for.",
   targetQuery: "prompt research for ai search",
-  status: "draft",
+  status: "published",
   published: "2026-10-25",
   updated: "2026-10-25",
   author: "Harshi Rathi",
