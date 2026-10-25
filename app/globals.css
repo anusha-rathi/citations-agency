@@ -67,3 +67,17 @@ details[open]::details-content {
   .marquee-wrap { overflow-x: auto !important; }
   .marquee-dupe { display: none !important; }
 }
+
+/* Blog post body */
+.post { font-size: 1.0625rem; line-height: 1.75; color: color-mix(in srgb, var(--color-ink) 88%, transparent); }
+.post > * + * { margin-top: 1.15rem; }
+.post h2 { margin-top: 2.75rem; font-family: var(--font-space); font-size: 1.6rem; font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; color: var(--color-ink); scroll-margin-top: 5rem; }
+.post h3 { margin-top: 2rem; font-family: var(--font-space); font-size: 1.2rem; font-weight: 700; color: var(--color-ink); }
+.post a:not([class]) { color: var(--color-ink); text-decoration: underline; text-decoration-color: var(--color-accent); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.post strong { color: var(--color-ink); font-weight: 650; }
+.post code { font-family: var(--font-geist-mono); font-size: 0.9em; background: var(--color-lav); padding: 0.1em 0.35em; border-radius: 4px; }
+.post ul, .post ol { padding-left: 1.25rem; }
+.post ul { list-style: disc; }
+.post ol { list-style: decimal; }
+.post li + li { margin-top: 0.4rem; }
+.post li::marker { color: var(--color-accent); }

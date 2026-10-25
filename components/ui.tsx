@@ -2,6 +2,7 @@
 
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { AnimatePresence, MotionConfig, motion } from "motion/react";
+import Link from "next/link";
 import type { ReactNode } from "react";
 import { h2 } from "@/lib/styles";
 
@@ -80,11 +81,11 @@ export function Cta({
   );
 }
 
-/** Opens the audit form dialog; falls back to the #contact section without JS. */
+/** Opens the audit form dialog (mounted once in the root layout); falls back to /#contact without JS. */
 export function AuditCta({ children, variant = "accent", className = "" }: { children: ReactNode; variant?: keyof typeof variants; className?: string }) {
   return (
-    <a
-      href="#contact"
+    <Link
+      href="/#contact"
       onClick={(e) => {
         const d = document.getElementById("audit") as HTMLDialogElement | null;
         if (!d) return;
@@ -95,6 +96,6 @@ export function AuditCta({ children, variant = "accent", className = "" }: { chi
     >
       {children}
       <Arrow />
-    </a>
+    </Link>
   );
 }

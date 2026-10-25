@@ -1,6 +1,7 @@
 "use client";
 
 import { Menu, X } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
 import { nav } from "@/lib/content";
 import { wrap } from "@/lib/styles";
@@ -11,9 +12,9 @@ export function Nav() {
   return (
     <header className="sticky top-0 z-50 border-b border-line/80 bg-paper/80 backdrop-blur-md">
       <div className={`${wrap} flex h-14 items-center justify-between`}>
-        <a href="#top" className="font-display text-base font-bold tracking-tight">
+        <Link href="/" className="font-display text-base font-bold tracking-tight">
           citations<span className="text-accent">.agency</span>
-        </a>
+        </Link>
         <nav aria-label="Primary" className="hidden items-center gap-6 text-[13px] font-medium lg:flex">
           {nav.map((n) => (
             <a key={n.href} href={n.href} className="text-ink/65 transition-colors hover:text-ink">

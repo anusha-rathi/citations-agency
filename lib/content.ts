@@ -1,9 +1,10 @@
 export const nav = [
-  { href: "#why", label: "why reddit" },
-  { href: "#system", label: "our system" },
-  { href: "#citations", label: "citations" },
-  { href: "#pricing", label: "pricing" },
-  { href: "#faq", label: "faqs" },
+  { href: "/#why", label: "why reddit" },
+  { href: "/#system", label: "our system" },
+  { href: "/#citations", label: "citations" },
+  { href: "/#pricing", label: "pricing" },
+  { href: "/blog", label: "blog" },
+  { href: "/#faq", label: "faqs" },
 ];
 
 /** Real public Reddit threads. Descriptions only restate what each title asks. */

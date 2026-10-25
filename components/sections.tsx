@@ -1,7 +1,7 @@
+import Link from "next/link";
 import { Check, Plus } from "lucide-react";
 import { custom, faqs, growth } from "@/lib/content";
 import { wrap } from "@/lib/styles";
-import { AuditDialog } from "./contact";
 import { AuditCta, Head, Reveal } from "./ui";
 
 /* ── Pricing + audit prompt ─────────────────────────────────────────── */
@@ -102,8 +102,7 @@ export function Faq() {
 
 /* ── Closing CTA + footer ───────────────────────────────────────────── */
 
-export async function Closing() {
-  "use cache"; // footer year is read from the clock
+export function Closing() {
   return (
     <>
       <section id="contact" className="bg-[linear-gradient(180deg,#F8F7F4_0%,#FFE7DE_100%)]">
@@ -117,19 +116,26 @@ export async function Closing() {
           <AuditCta className="mt-7">Get a Free AI Visibility Audit</AuditCta>
         </Reveal>
       </section>
-      <footer className="bg-peach">
+      <Footer />
+    </>
+  );
+}
+
+export async function Footer() {
+  "use cache"; // the year is read from the clock
+  return (
+    <footer className="bg-peach">
         <div className={`${wrap} flex flex-col gap-3 border-t border-ink/10 py-6 text-sm sm:flex-row sm:items-center sm:justify-between`}>
-          <a href="#top" className="font-display font-bold tracking-tight">
+          <Link href="/" className="font-display font-bold tracking-tight">
             citations<span className="text-accent">.agency</span>
-          </a>
+          </Link>
           <nav aria-label="Footer" className="flex flex-wrap items-center gap-x-5 gap-y-1 text-ink/60">
-            <a href="#contact" className="hover:text-ink">contact</a>
-            <a href="/privacy" className="hover:text-ink">privacy</a>
+            <Link href="/blog" className="hover:text-ink">blog</Link>
+            <Link href="/#contact" className="hover:text-ink">contact</Link>
+            <Link href="/privacy" className="hover:text-ink">privacy</Link>
             <span>© {new Date().getFullYear()}</span>
           </nav>
         </div>
       </footer>
-      <AuditDialog />
-    </>
   );
 }

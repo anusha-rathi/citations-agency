@@ -22,6 +22,13 @@ width and height, platform, type (`Linked citation`, `Brand mention` or `Search 
 a title and short context. Optional: `prompt`, `captured`, `url`. Only add screenshots of
 real results, and don't attribute a result to client work without evidence.
 
+## Blog
+
+Posts live in `content/blog/<slug>.ts` (one file each, registered in `content/blog/index.ts`)
+and render at `/blog/<slug>`. A post with `status: "draft"` shows only on localhost.
+How posts are researched, written and checked: `docs/blog/README.md`. Plan: `docs/blog/tracker.md`.
+Run `npm run check:posts` before publishing.
+
 ## Contact form
 
 The audit form (a dialog opened by every "free audit" button) posts JSON (`name`, `email`, `website`, `notes`) to an endpoint you configure.
