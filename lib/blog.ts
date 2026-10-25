@@ -48,6 +48,8 @@ export type Post = {
   faqs: { q: string; a: string }[];
   sources: { title: string; url: string; type: SourceType; read: string }[];
   related?: string[];
+  /** Problem-specific CTA copy. `mid` sits in the body's { t: "cta" } block; title/text/button make the end box. */
+  cta: { mid: string; title: string; text: string; button: string };
 };
 
 const strip = (s: string) => s.replace(/<[^>]+>/g, " ");

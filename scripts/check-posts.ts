@@ -56,6 +56,8 @@ function check(p: Post) {
 
   // House rules (README O4)
   if (!p.body.some((b) => b.t === "cta")) fail.push("O4 no mid-article audit CTA block");
+  if (!p.cta?.mid || !p.cta?.title || !p.cta?.button) fail.push("O4 missing post-specific CTA copy");
+  [p.cta?.mid, p.cta?.title, p.cta?.text].filter(Boolean).forEach((t) => t!.includes("—") && fail.push("H11 em dash in CTA copy"));
   if (!p.body.some((b) => b.t === "img" || b.t === "table")) warn.push("O4 no proof element (image or table)");
 
   // SEO warnings

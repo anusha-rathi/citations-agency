@@ -37,7 +37,7 @@ const tone = {
   note: ["", "bg-white border-line"],
 } as const;
 
-function Render({ b }: { b: Block }) {
+function Render({ b, p }: { b: Block; p: Post }) {
   switch (b.t) {
     case "h2":
       return <h2 id={b.id ?? slugify(b.c)} {...html(b.c)} />;
@@ -95,8 +95,8 @@ function Render({ b }: { b: Block }) {
     case "cta":
       return (
         <aside className="flex flex-col gap-3 rounded-2xl bg-lav/60 p-5 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-[16px] text-ink">Want to know which prompts your brand is missing from? We’ll check for free.</p>
-          <AuditCta variant="ink" className="shrink-0">Get a Free AI Visibility Audit</AuditCta>
+          <p className="text-[16px] text-ink" {...html(p.cta.mid)} />
+          <AuditCta variant="ink" className="shrink-0">{p.cta.button}</AuditCta>
         </aside>
       );
   }
@@ -148,7 +148,7 @@ export default async function PostPage({ params }: PageProps<"/blog/[slug]">) {
           )}
 
           <div className="post mt-8">
-            {p.body.map((b, i) => <Render key={i} b={b} />)}
+            {p.body.map((b, i) => <Render key={i} b={b} p={p} />)}
           </div>
 
           {p.faqs.length > 0 && (
@@ -184,11 +184,9 @@ export default async function PostPage({ params }: PageProps<"/blog/[slug]">) {
           )}
 
           <aside className="mt-14 rounded-2xl bg-[linear-gradient(135deg,#FFE7DE,#F8F7F4)] p-6 text-center sm:p-8">
-            <p className="font-display text-xl font-bold tracking-tight">See where your brand shows up in AI answers.</p>
-            <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-muted">
-              We check the prompts your buyers ask, which sources get cited, and where you’re missing.
-            </p>
-            <AuditCta className="mt-5">Get a Free AI Visibility Audit</AuditCta>
+            <p className="font-display text-xl font-bold tracking-tight">{p.cta.title}</p>
+            <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-muted" {...html(p.cta.text)} />
+            <AuditCta className="mt-5">{p.cta.button}</AuditCta>
           </aside>
 
           {p.sources.length > 0 && (
