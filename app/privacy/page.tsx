@@ -21,7 +21,10 @@ export default function Privacy() {
           We use that information only to prepare your audit and reply to you. We do not sell it or share it with third
           parties for their own marketing.
         </p>
-        <p>To ask us to update or delete your details, reply to any email you receive from us.</p>
+        <p>
+          To ask us to update or delete your details, email{" "}
+          <a href="mailto:connect@citations.agency" className="text-ink underline">connect@citations.agency</a>.
+        </p>
       </div>
     </main>
   );

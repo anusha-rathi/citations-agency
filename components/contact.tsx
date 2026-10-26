@@ -2,11 +2,12 @@
 
 import { ArrowUpRight, Check, X } from "lucide-react";
 import { useState } from "react";
+import { contactEmail } from "@/lib/site";
 import { ctaClass } from "./ui";
 
 // Integration checklist: see README.md ("Contact form").
 const ENDPOINT = process.env.NEXT_PUBLIC_FORM_ENDPOINT;
-const EMAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL;
+const EMAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? contactEmail;
 
 type Status = "idle" | "sending" | "sent" | "mail" | "error";
 
@@ -138,6 +139,12 @@ export function AuditDialog() {
         <div className="mt-5">
           <ContactForm />
         </div>
+        <p className="mt-4 border-t border-line pt-4 text-center text-sm text-muted">
+          Prefer email? Write to{" "}
+          <a href={`mailto:${contactEmail}`} className="font-medium text-ink underline decoration-accent underline-offset-2">
+            {contactEmail}
+          </a>
+        </p>
       </div>
     </dialog>
   );

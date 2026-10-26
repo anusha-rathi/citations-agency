@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Check, Plus } from "lucide-react";
 import { custom, faqs, growth } from "@/lib/content";
+import { contactEmail } from "@/lib/site";
 import { wrap } from "@/lib/styles";
 import { AuditCta, Head, Reveal } from "./ui";
 
@@ -69,9 +70,12 @@ export function Pricing() {
             pretend to know either until we look.
           </p>
         </div>
-        <AuditCta variant="ink" className="shrink-0">
-          Get a Free AI Visibility Audit
-        </AuditCta>
+        <div className="shrink-0 text-center">
+          <AuditCta variant="ink">Get a Free AI Visibility Audit</AuditCta>
+          <p className="mt-2 text-xs text-muted">
+            or <a href={`mailto:${contactEmail}`} className="underline decoration-accent underline-offset-2">{contactEmail}</a>
+          </p>
+        </div>
       </Reveal>
     </section>
   );
@@ -114,6 +118,12 @@ export function Closing() {
             A few questions, a little research, and a clearer picture of what comes next.
           </p>
           <AuditCta className="mt-7">Get a Free AI Visibility Audit</AuditCta>
+          <p className="mt-4 text-sm text-muted">
+            or email{" "}
+            <a href={`mailto:${contactEmail}`} className="font-medium text-ink underline decoration-accent underline-offset-2">
+              {contactEmail}
+            </a>
+          </p>
         </Reveal>
       </section>
       <Footer />
@@ -131,7 +141,7 @@ export async function Footer() {
           </Link>
           <nav aria-label="Footer" className="flex flex-wrap items-center gap-x-5 gap-y-1 text-ink/60">
             <Link href="/blog" className="hover:text-ink">blog</Link>
-            <Link href="/#contact" className="hover:text-ink">contact</Link>
+            <a href={`mailto:${contactEmail}`} className="hover:text-ink">{contactEmail}</a>
             <Link href="/privacy" className="hover:text-ink">privacy</Link>
             <span>© {new Date().getFullYear()}</span>
           </nav>

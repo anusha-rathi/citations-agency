@@ -7,6 +7,7 @@ import { Nav } from "@/components/nav";
 import { Footer } from "@/components/sections";
 import { AuditCta } from "@/components/ui";
 import { buckets, fmtDate, getPost, initials, livePosts, readMinutes, slugify, type Block, type Post } from "@/lib/blog";
+import { contactEmail } from "@/lib/site";
 import { wrap } from "@/lib/styles";
 
 // Cache Components needs at least one param; "_" renders a 404 until the first post exists.
@@ -186,6 +187,9 @@ export default async function PostPage({ params }: PageProps<"/blog/[slug]">) {
             <p className="font-display text-xl font-bold tracking-tight">{p.cta.title}</p>
             <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-muted" {...html(p.cta.text)} />
             <AuditCta className="mt-5">{p.cta.button}</AuditCta>
+            <p className="mt-3 text-sm text-muted">
+              or email <a href={`mailto:${contactEmail}`} className="font-medium text-ink underline decoration-accent underline-offset-2">{contactEmail}</a>
+            </p>
           </aside>
 
           {related.length > 0 && (
@@ -221,6 +225,7 @@ export default async function PostPage({ params }: PageProps<"/blog/[slug]">) {
               <p className="font-display font-bold">citations<span className="text-accent">.agency</span></p>
               <p className="mt-1.5 text-[13px] leading-relaxed text-muted" {...html(p.cta.mid)} />
               <AuditCta variant="ink" className="mt-3 w-full !min-h-10 text-[13px]">{p.cta.button}</AuditCta>
+              <a href={`mailto:${contactEmail}`} className="mt-2.5 block text-center text-xs text-muted hover:text-ink">{contactEmail}</a>
             </div>
           </div>
         </aside>

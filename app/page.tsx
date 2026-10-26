@@ -14,6 +14,7 @@ const jsonLd = {
       "@type": "ProfessionalService",
       name: "citations.agency",
       url: "https://citations.agency",
+      email: "connect@citations.agency",
       slogan: "AI citations = prompt-backed research + content.",
       description: "AI citations, AEO, GEO and AI SEO through prompt-backed research, content, and Reddit execution.",
       knowsAbout: ["AI citations", "Answer Engine Optimization", "Generative Engine Optimization", "AI SEO", "Prompt research", "Reddit marketing"],
