@@ -8,8 +8,18 @@ import { post as promptResearch } from "./prompt-research-for-ai-search";
 import { post as warmUpRedditAccount } from "./how-to-warm-up-a-reddit-account";
 import { post as redditMarketingCost } from "./reddit-marketing-agency-cost";
 import { post as whyChatgptRecommendsYourCompetitor } from "./why-chatgpt-recommends-your-competitor";
+import { post as technicalChecklist } from "./technical-ai-search-checklist";
+import { post as robotsTxtAi } from "./robots-txt-for-ai-crawlers";
+import { post as isSeoDead } from "./is-seo-dead";
+import { post as chatgptGoogleBing } from "./does-chatgpt-use-google-or-bing";
+import { post as newWebsiteChatgpt } from "./can-a-new-website-show-up-in-chatgpt";
+import { post as citationsVsMentions } from "./ai-citations-vs-brand-mentions";
+import { post as redditSelfPromo } from "./reddit-self-promotion-rules";
+import { post as brandVsPersonal } from "./brand-vs-personal-reddit-account";
+import { post as redditSaas } from "./reddit-marketing-for-saas";
+import { post as agencyVsInHouse } from "./reddit-marketing-agency-vs-in-house";
 import { post as whyWasMyRedditPostRemoved } from "./why-was-my-reddit-post-removed";
 
 // Register each post here after creating content/blog/<slug>.ts.
 // Format reference: lib/blog.ts (Block and Post types). Rules: docs/blog/README.md.
-export const posts: Post[] = [doesLlmsTxtWork, whyWasMyRedditPostRemoved, whyChatgptRecommendsYourCompetitor, howToGetCitedByChatgpt, aeoVsGeoVsSeo, howToTrackBrandMentions, promptResearch, canChatgptReadJavascript, warmUpRedditAccount, redditMarketingCost];
+export const posts: Post[] = [doesLlmsTxtWork, whyWasMyRedditPostRemoved, whyChatgptRecommendsYourCompetitor, howToGetCitedByChatgpt, aeoVsGeoVsSeo, howToTrackBrandMentions, promptResearch, canChatgptReadJavascript, warmUpRedditAccount, redditMarketingCost, technicalChecklist, robotsTxtAi, isSeoDead, chatgptGoogleBing, newWebsiteChatgpt, citationsVsMentions, redditSelfPromo, brandVsPersonal, redditSaas, agencyVsInHouse];

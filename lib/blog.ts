@@ -23,7 +23,7 @@ export const bucketIntro: Record<keyof typeof buckets, string> = {
 };
 
 export type Style = "RS Playbook" | "RS Answer" | "Data post" | "Verdict post" | "Comparison";
-export type SourceType = "vendor" | "forum" | "primary" | "platform" | "press" | "reviews" | "ours";
+export type SourceType = "vendor" | "research" | "forum" | "primary" | "platform" | "press" | "reviews" | "ours";
 
 /** Prose strings may contain inline HTML (<a>, <strong>, <em>, <code>). */
 export type Block =
