@@ -37,7 +37,7 @@ For founders and marketers new to AI search. The goal is to explain the shift an
 | 1.3 | What is AI SEO? A plain-language guide for founders | what is ai seo | RS Answer | 1,000 | Idea |  |
 | 1.4 | Is SEO dead because of AI? What the click data says | is seo dead because of ai | Data post | 1,500 | Published | 2026-10-26 |
 | 1.5 | How ChatGPT chooses its sources, with real search examples | how does chatgpt choose sources | Data post | 1,800 | Idea |  |
-| 1.6 | What is query fan-out? | what is query fan-out | RS Answer | 800 | Idea |  |
+| 1.6 | What is query fan-out? | what is query fan-out | RS Answer | 800 | Published | 2026-10-27 |
 | 1.7 | Does ChatGPT use Google or Bing? | does chatgpt use google or bing | RS Answer | 900 | Published | 2026-10-26 |
 | 1.8 | What AI Overviews did to clicks, and how to read Search Console now | ai overviews traffic drop | Data post | 1,500 | Idea |  |
 | 1.9 | AI search strategy for B2B SaaS: the playbook (2026) | ai search strategy for saas | RS Playbook | 2,500 | Idea |  |
@@ -53,12 +53,12 @@ The category closest to the audit offer: getting cited or recommended by ChatGPT
 | 2.2 | How to rank in ChatGPT, and why "rank" is the wrong word | how to rank in chatgpt | RS Answer | 1,200 | Idea |  |
 | 2.3 | How to get ChatGPT to recommend your business (SaaS and consumer brands) | how to get chatgpt to recommend my business | RS Playbook | 2,000 | Idea |  |
 | 2.4 ★ | Why ChatGPT recommends your competitor instead of you | why chatgpt recommends my competitor | Data post | 1,500 | Published | Draft `content/blog/why-chatgpt-recommends-your-competitor.ts` · Harshi Rathi · 25 Oct 2026 |
-| 2.5 | How to get cited in Google AI Overviews | how to get cited in google ai overviews | RS Playbook | 2,000 | Idea |  |
-| 2.6 | Why your brand is missing from AI answers: 10 things to check | why is my brand not in chatgpt | RS Answer | 1,200 | Idea |  |
+| 2.5 | How to get cited in Google AI Overviews | how to get cited in google ai overviews | RS Playbook | 2,000 | Published | 2026-10-27 |
+| 2.6 | Why your brand is missing from AI answers: 10 things to check | why is my brand not in chatgpt | RS Answer | 1,200 | Published | 2026-10-27 |
 | 2.7 ★ | How to track brand mentions in ChatGPT: free method and template | how to track brand mentions in chatgpt | RS Playbook | 1,800 | Published | Draft `content/blog/how-to-track-brand-mentions-in-chatgpt.ts` · Harshi Rathi · 25 Oct 2026 |
 | 2.8 ★ | Prompt research: turning keywords into the questions buyers ask AI | prompt research for ai search | RS Playbook | 1,800 | Published | Draft `content/blog/prompt-research-for-ai-search.ts` · Harshi Rathi · 25 Oct 2026 |
 | 2.9 | AI citations vs brand mentions: what to report | ai citations vs brand mentions | RS Answer | 900 | Published | 2026-10-26 |
-| 2.10 | How to find ChatGPT traffic in GA4 | chatgpt traffic in google analytics 4 | RS Answer | 1,000 | Idea |  |
+| 2.10 | How to find ChatGPT traffic in GA4 | chatgpt traffic in google analytics 4 | RS Answer | 1,000 | Published | 2026-10-27 |
 
 ## 3 · Technical
 
@@ -69,11 +69,11 @@ The most winnable category for a new site. Lead with what blocks AI crawlers, an
 | 3.1 ★ | The technical AI search checklist: what your site needs, and what it doesn't | technical seo checklist for ai search | RS Playbook | 2,500 | Published | 2026-10-26 |
 | 3.2 ★ | Does llms.txt work? Four studies, then our own server logs | does llms.txt work | Verdict post | 1,500 | Published | Draft `content/blog/does-llms-txt-work.ts` · Harshi Rathi · 25 Oct 2026 · Publish the verdict now; add log data after 60 days |
 | 3.3 | robots.txt for AI crawlers: a copy-paste template (2026) | robots.txt ai crawlers | RS Playbook | 1,500 | Published | 2026-10-26 |
-| 3.4 | GPTBot vs OAI-SearchBot: which one to block | gptbot vs oai-searchbot | RS Answer | 800 | Idea |  |
+| 3.4 | GPTBot vs OAI-SearchBot: which one to block | gptbot vs oai-searchbot | RS Answer | 800 | Published | 2026-10-27 |
 | 3.5 ★ | Can ChatGPT read your site? The 2-minute JavaScript test | can chatgpt read javascript | RS Answer | 1,000 | Published | Draft `content/blog/can-chatgpt-read-javascript.ts` · Harshi Rathi · 25 Oct 2026 |
 | 3.6 | Does schema help AI citations? What 158,000 answers show | does schema help ai citations | Data post | 1,500 | Idea |  |
 | 3.7 | Cloudflare's AI bot settings: check you are not blocking Googlebot | cloudflare block ai bots | RS Answer | 900 | Idea |  |
-| 3.8 | Bing Webmaster Tools and IndexNow in 10 minutes | bing webmaster tools ai performance | RS Answer | 1,200 | Idea |  |
+| 3.8 | Bing Webmaster Tools and IndexNow in 10 minutes | bing webmaster tools ai performance | RS Answer | 1,200 | Published | 2026-10-27 |
 | 3.9 | llms.txt vs robots.txt: what each one does | llms.txt vs robots.txt | RS Answer | 800 | Idea |  |
 | 3.10 | How to structure a blog post so Google and AI can use it | how to write content for ai search | RS Playbook | 1,800 | Idea |  |
 
@@ -88,9 +88,9 @@ The product category. This is where client screenshots and first-hand examples s
 | 4.3 ★ | How to warm up a new Reddit account: a 30-day plan | how to warm up a reddit account | RS Playbook | 1,800 | Published | Draft `content/blog/how-to-warm-up-a-reddit-account.ts` · Vijay Singh · 25 Oct 2026 |
 | 4.4 ★ | Why was my Reddit post removed? 10 causes and how to tell which | why was my reddit post removed | RS Answer | 1,200 | Published | Draft `content/blog/why-was-my-reddit-post-removed.ts` · Vijay Singh · 25 Oct 2026 |
 | 4.5 | Reddit self-promotion rules: what Reddit bans vs what subreddits ban | reddit self promotion rules | RS Answer | 1,200 | Published | 2026-10-26 |
-| 4.6 | Reddit shadowban: how to check, why it happened, how to recover | reddit shadowban check | RS Answer | 1,000 | Idea |  |
-| 4.7 | Reddit Contributor Quality Score (CQS), explained | reddit contributor quality score | RS Answer | 1,000 | Idea |  |
-| 4.8 | How to find the subreddits your buyers, and AI, already use | how to find subreddits for your business | RS Playbook | 1,500 | Idea |  |
+| 4.6 | Reddit shadowban: how to check, why it happened, how to recover | reddit shadowban check | RS Answer | 1,000 | Published | 2026-10-27 |
+| 4.7 | Reddit Contributor Quality Score (CQS), explained | reddit contributor quality score | RS Answer | 1,000 | Published | 2026-10-27 |
+| 4.8 | How to find the subreddits your buyers, and AI, already use | how to find subreddits for your business | RS Playbook | 1,500 | Published | 2026-10-27 |
 | 4.9 | Commenting on Reddit threads that already rank in Google | how to find reddit threads ranking on google | RS Answer | 1,200 | Idea |  |
 | 4.10 | Brand account, founder account or employees: who should post on Reddit | reddit brand account vs personal account | RS Answer | 1,200 | Published | 2026-10-26 |
 
@@ -137,7 +137,7 @@ Read right before a call. Agency-name searches ("reddit marketing agency", "geo 
 | 7.1 ★ | How much does Reddit marketing cost? Agency pricing explained | reddit marketing agency cost | RS Answer | 1,500 | Published | Draft `content/blog/reddit-marketing-agency-cost.ts` · Harshi Rathi · 25 Oct 2026 |
 | 7.2 | How much does AI SEO cost in 2026? | how much does ai seo cost | RS Answer | 1,500 | Idea |  |
 | 7.3 | How to choose a Reddit marketing agency: 12 questions to ask | best reddit marketing agency | RS Playbook | 1,800 | Idea |  |
-| 7.4 | How to choose an AI SEO agency: 12 questions to ask | ai seo agency | RS Playbook | 1,800 | Idea |  |
+| 7.4 | How to choose an AI SEO agency: 12 questions to ask | ai seo agency | RS Playbook | 1,800 | Published | 2026-10-27 |
 | 7.5 | Reddit marketing agency vs an in-house team | reddit marketing agency vs in-house | RS Answer | 1,200 | Published | 2026-10-26 |
 | 7.6 | Best AI visibility tracking tools (2026), compared | best ai visibility tools | Comparison | 3,500 | Idea |  |
 | 7.7 | Profound vs Peec AI | profound vs peec ai | Comparison | 1,500 | Idea |  |
