@@ -17,6 +17,7 @@ const input =
 function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [sentTo, setSentTo] = useState("");
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -46,6 +47,7 @@ function ContactForm() {
         body: JSON.stringify(data),
       });
       if (!res.ok) throw new Error(String(res.status));
+      setSentTo(data.email);
       setStatus("sent");
     } catch {
       setStatus("error");
@@ -71,7 +73,11 @@ function ContactForm() {
           <Check aria-hidden className="size-5" strokeWidth={2.5} />
         </span>
         <p className="mt-4 font-display text-xl font-bold">Request received.</p>
-        <p className="mt-1 text-sm text-muted">We’ll take a look and reply by email.</p>
+        <p className="mt-1 text-sm text-muted">We’ll look at your brand and send your audit to {sentTo}.</p>
+        <p className="mt-3 text-sm text-muted">
+          Want to talk it through sooner?{" "}
+          <a href={bookingUrl} target="_blank" rel="noopener" className="font-medium text-ink underline decoration-accent underline-offset-2">Book a 30-min call</a>
+        </p>
       </div>
     );
 
