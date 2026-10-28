@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
   partialPrefetching: true,
   async redirects() {
     return [
+      { source: "/call", destination: "https://calendly.com/anusharwork/30min", permanent: false },
       {
         source: "/:path*",
         has: [{ type: "host", value: "www.citations.agency" }],

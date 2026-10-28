@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Check, Plus } from "lucide-react";
 import { custom, faqs, growth } from "@/lib/content";
-import { contactEmail } from "@/lib/site";
+import { bookingUrl, contactEmail } from "@/lib/site";
 import { wrap } from "@/lib/styles";
 import { AuditCta, Head, Reveal } from "./ui";
 
@@ -73,7 +73,7 @@ export function Pricing() {
         <div className="shrink-0 text-center">
           <AuditCta variant="ink">Get a Free AI Visibility Audit</AuditCta>
           <p className="mt-2 text-xs text-muted">
-            or <a href={`mailto:${contactEmail}`} className="underline decoration-accent underline-offset-2">{contactEmail}</a>
+            or <a href={bookingUrl} target="_blank" rel="noopener" className="font-medium text-ink underline decoration-accent underline-offset-2">book a 30-min call</a> · <a href={`mailto:${contactEmail}`} className="underline decoration-accent underline-offset-2">{contactEmail}</a>
           </p>
         </div>
       </Reveal>
@@ -119,7 +119,7 @@ export function Closing() {
           </p>
           <AuditCta className="mt-7">Get a Free AI Visibility Audit</AuditCta>
           <p className="mt-4 text-sm text-muted">
-            or email{" "}
+            or <a href={bookingUrl} target="_blank" rel="noopener" className="font-medium text-ink underline decoration-accent underline-offset-2">book a 30-min call</a>, or email{" "}
             <a href={`mailto:${contactEmail}`} className="font-medium text-ink underline decoration-accent underline-offset-2">
               {contactEmail}
             </a>

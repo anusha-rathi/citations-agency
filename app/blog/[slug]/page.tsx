@@ -7,7 +7,7 @@ import { Nav } from "@/components/nav";
 import { Footer } from "@/components/sections";
 import { AuditCta } from "@/components/ui";
 import { buckets, fmtDate, getPost, initials, livePosts, readMinutes, slugify, type Block, type Post } from "@/lib/blog";
-import { contactEmail } from "@/lib/site";
+import { bookingUrl, contactEmail } from "@/lib/site";
 import { wrap } from "@/lib/styles";
 
 // Cache Components needs at least one param; "_" renders a 404 until the first post exists.
@@ -188,7 +188,7 @@ export default async function PostPage({ params }: PageProps<"/blog/[slug]">) {
             <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-muted" {...html(p.cta.text)} />
             <AuditCta className="mt-5">{p.cta.button}</AuditCta>
             <p className="mt-3 text-sm text-muted">
-              or email <a href={`mailto:${contactEmail}`} className="font-medium text-ink underline decoration-accent underline-offset-2">{contactEmail}</a>
+              or <a href={bookingUrl} target="_blank" rel="noopener" className="font-medium text-ink underline decoration-accent underline-offset-2">book a 30-min call</a>, or email <a href={`mailto:${contactEmail}`} className="font-medium text-ink underline decoration-accent underline-offset-2">{contactEmail}</a>
             </p>
           </aside>
 

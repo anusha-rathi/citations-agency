@@ -2,7 +2,7 @@
 
 import { ArrowUpRight, Check, X } from "lucide-react";
 import { useState } from "react";
-import { contactEmail } from "@/lib/site";
+import { bookingUrl, contactEmail } from "@/lib/site";
 import { ctaClass } from "./ui";
 
 // Integration checklist: see README.md ("Contact form").
@@ -140,7 +140,7 @@ export function AuditDialog() {
           <ContactForm />
         </div>
         <p className="mt-4 border-t border-line pt-4 text-center text-sm text-muted">
-          Prefer email? Write to{" "}
+          Rather talk? <a href={bookingUrl} target="_blank" rel="noopener" className="font-medium text-ink underline decoration-accent underline-offset-2">Book a 30-min call</a>. Prefer email? Write to{" "}
           <a href={`mailto:${contactEmail}`} className="font-medium text-ink underline decoration-accent underline-offset-2">
             {contactEmail}
           </a>
