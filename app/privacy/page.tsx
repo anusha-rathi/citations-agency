@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-export const metadata: Metadata = { title: "Privacy Policy" };
+export const metadata: Metadata = { title: "Privacy Policy", alternates: { canonical: "/privacy" } };
 
 // ponytail: placeholder policy covering only the audit form. Replace with a lawyer-reviewed policy before launch.
 export default function Privacy() {
