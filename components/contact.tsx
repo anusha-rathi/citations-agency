@@ -69,7 +69,7 @@ function ContactForm() {
 
   if (status === "sent")
     return (
-      <div role="status" className="py-6 text-center">
+      <div role="status" data-sent className="py-6 text-center">
         <span className="mx-auto grid size-11 place-items-center rounded-full bg-accent">
           <Check aria-hidden className="size-5" strokeWidth={2.5} />
         </span>
@@ -126,7 +126,7 @@ export function AuditDialog() {
       onClick={(e) => e.target === e.currentTarget && e.currentTarget.close()}
       className="m-auto w-[min(92vw,28rem)] rounded-3xl bg-paper p-0 text-ink outline-none backdrop:bg-ink/60 backdrop:backdrop-blur-sm"
     >
-      <div className="p-6 sm:p-7">
+      <div className="group p-6 sm:p-7">
         <div className="flex items-start justify-between gap-4">
           <div>
             <p className="font-mono text-xs tracking-wider text-muted">free AI visibility audit</p>
@@ -146,7 +146,7 @@ export function AuditDialog() {
         <div className="mt-5">
           <ContactForm />
         </div>
-        <p className="mt-4 border-t border-line pt-4 text-center text-sm text-muted">
+        <p className="mt-4 border-t border-line pt-4 text-center text-sm text-muted group-has-[[data-sent]]:hidden">
           Rather talk? <a href={bookingUrl} target="_blank" rel="noopener" className="font-medium text-ink underline decoration-accent underline-offset-2">Book a 30-min call</a>. Prefer email? Write to{" "}
           <a href={`mailto:${contactEmail}`} className="font-medium text-ink underline decoration-accent underline-offset-2">
             {contactEmail}
