@@ -44,7 +44,8 @@ function ContactForm() {
       const res = await fetch(ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(data),
+        // _gotcha is our own honeypot, already checked above; _subject sets the email subject.
+        body: JSON.stringify({ name: data.name, email: data.email, website: data.website, notes: data.notes, _subject: `Free audit request: ${data.website}` }),
       });
       if (!res.ok) throw new Error(String(res.status));
       setSentTo(data.email);
