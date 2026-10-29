@@ -28,8 +28,18 @@ import { post as redditShadowban } from "./reddit-shadowban";
 import { post as redditCqs } from "./reddit-contributor-quality-score";
 import { post as findSubreddits } from "./how-to-find-subreddits-for-your-business";
 import { post as chooseAiSeoAgency } from "./how-to-choose-an-ai-seo-agency";
+import { post as whatIsAiSeo } from "./what-is-ai-seo";
+import { post as geoGuide } from "./generative-engine-optimization";
+import { post as chatgptSources } from "./how-chatgpt-chooses-sources";
+import { post as chatgptRecommend } from "./how-to-get-chatgpt-to-recommend-your-business";
+import { post as schemaAi } from "./does-schema-help-ai-citations";
+import { post as cloudflareAi } from "./cloudflare-ai-bot-settings";
+import { post as blogStructure } from "./how-to-structure-a-blog-post-for-ai";
+import { post as aiOverviewsDrop } from "./ai-overviews-traffic-drop";
+import { post as aiVisReport } from "./ai-visibility-report";
+import { post as redditRankingThreads } from "./commenting-on-reddit-threads-ranking-in-google";
 import { post as whyWasMyRedditPostRemoved } from "./why-was-my-reddit-post-removed";
 
 // Register each post here after creating content/blog/<slug>.ts.
 // Format reference: lib/blog.ts (Block and Post types). Rules: docs/blog/README.md.
-export const posts: Post[] = [doesLlmsTxtWork, whyWasMyRedditPostRemoved, whyChatgptRecommendsYourCompetitor, howToGetCitedByChatgpt, aeoVsGeoVsSeo, howToTrackBrandMentions, promptResearch, canChatgptReadJavascript, warmUpRedditAccount, redditMarketingCost, technicalChecklist, robotsTxtAi, isSeoDead, chatgptGoogleBing, newWebsiteChatgpt, citationsVsMentions, redditSelfPromo, brandVsPersonal, redditSaas, agencyVsInHouse, aiOverviews, queryFanOut, gptbotVsSearchbot, bingAiPerformance, brandNotInChatgpt, chatgptGa4, redditShadowban, redditCqs, findSubreddits, chooseAiSeoAgency];
+export const posts: Post[] = [doesLlmsTxtWork, whyWasMyRedditPostRemoved, whyChatgptRecommendsYourCompetitor, howToGetCitedByChatgpt, aeoVsGeoVsSeo, howToTrackBrandMentions, promptResearch, canChatgptReadJavascript, warmUpRedditAccount, redditMarketingCost, technicalChecklist, robotsTxtAi, isSeoDead, chatgptGoogleBing, newWebsiteChatgpt, citationsVsMentions, redditSelfPromo, brandVsPersonal, redditSaas, agencyVsInHouse, aiOverviews, queryFanOut, gptbotVsSearchbot, bingAiPerformance, brandNotInChatgpt, chatgptGa4, redditShadowban, redditCqs, findSubreddits, chooseAiSeoAgency, whatIsAiSeo, geoGuide, chatgptSources, chatgptRecommend, schemaAi, cloudflareAi, blogStructure, aiOverviewsDrop, aiVisReport, redditRankingThreads];
