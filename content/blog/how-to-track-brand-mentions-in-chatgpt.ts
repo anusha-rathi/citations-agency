@@ -286,7 +286,7 @@ export const post: Post = {
     { title: "Google: AI features and your website", url: google, type: "primary", read: "2026-10-25" },
     { title: "Something Inc: 2026 AI Citation Study", url: "https://somethinginc.com/blog/2026-ai-citation-study/", type: "vendor", read: "2026-10-25" },
   ],
-  related: ["how-to-get-cited-by-chatgpt", "why-chatgpt-recommends-your-competitor", "prompt-research-for-ai-search"],
+  related: ["best-ai-visibility-tools", "how-to-get-cited-by-chatgpt", "prompt-research-for-ai-search"],
   cta: {
     mid: "Don’t want to build the sheet yourself? We’ll run your first month of prompts and hand you the baseline.",
     title: "Get your first month of tracking done for you.",

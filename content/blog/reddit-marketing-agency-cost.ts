@@ -271,7 +271,7 @@ export const post: Post = {
     { title: "FixAEO: best Reddit marketing agencies 2026", url: "https://fixaeo.com/blogs/best-reddit-marketing-agencies-2026/", type: "vendor", read: "2026-10-25" },
     { title: "Reddit Rules", url: "https://redditinc.com/policies/reddit-rules", type: "primary", read: "2026-10-25" },
   ],
-  related: ["how-to-warm-up-a-reddit-account", "why-was-my-reddit-post-removed", "why-chatgpt-recommends-your-competitor"],
+  related: ["how-to-choose-a-reddit-marketing-agency", "how-to-warm-up-a-reddit-account", "why-was-my-reddit-post-removed"],
   cta: {
     mid: "Want to know what a Reddit program should cost for your category? We’ll scope it with you, for free.",
     title: "Get a Reddit plan priced for your goals.",

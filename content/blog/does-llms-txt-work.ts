@@ -273,7 +273,7 @@ export const post: Post = {
     { title: "llmstxt.org", url: "https://llmstxt.org/", type: "primary", read: "2026-10-25" },
     { title: "HN: rickette", url: "https://news.ycombinator.com/item?id=48410589", type: "forum", read: "2026-10-25" },
   ],
-  related: ["how-to-get-cited-by-chatgpt", "aeo-vs-geo-vs-seo", "why-chatgpt-recommends-your-competitor"],
+  related: ["llms-txt-vs-robots-txt", "how-to-get-cited-by-chatgpt", "aeo-vs-geo-vs-seo"],
   cta: {
     mid: "Not sure whether AI crawlers can even reach your pages? We’ll check robots.txt, your CDN and rendering for you.",
     title: "Skip the file. Find out what’s actually blocking you.",

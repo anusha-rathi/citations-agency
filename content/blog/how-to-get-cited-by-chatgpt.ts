@@ -308,7 +308,7 @@ export const post: Post = {
     { title: "GEO: Generative Engine Optimization (KDD 2024)", url: "https://arxiv.org/abs/2311.09735", type: "primary", read: "2026-10-25" },
     { title: "Adrian Holovaty: Adding a feature because ChatGPT incorrectly thinks it exists", url: "https://www.holovaty.com/writing/chatgpt-fake-feature/", type: "press", read: "2026-10-25" },
   ],
-  related: ["why-chatgpt-recommends-your-competitor", "aeo-vs-geo-vs-seo", "does-llms-txt-work"],
+  related: ["how-to-rank-in-chatgpt", "why-chatgpt-recommends-your-competitor", "aeo-vs-geo-vs-seo"],
   cta: {
     mid: "Want Phases 1 and 2 done for you? We check crawler access and run your buyers’ prompts across ChatGPT, Perplexity and Gemini.",
     title: "Get your prompt baseline, free.",

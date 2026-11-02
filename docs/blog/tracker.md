@@ -40,7 +40,7 @@ For founders and marketers new to AI search. The goal is to explain the shift an
 | 1.6 | What is query fan-out? | what is query fan-out | RS Answer | 800 | Published | 2026-10-27 |
 | 1.7 | Does ChatGPT use Google or Bing? | does chatgpt use google or bing | RS Answer | 900 | Published | 2026-10-26 |
 | 1.8 | What AI Overviews did to clicks, and how to read Search Console now | ai overviews traffic drop | Data post | 1,500 | Published | 2026-10-29 |
-| 1.9 | AI search strategy for B2B SaaS: the playbook (2026) | ai search strategy for saas | RS Playbook | 2,500 | Idea |  |
+| 1.9 | AI search strategy for B2B SaaS: the playbook (2026) | ai search strategy for saas | RS Playbook | 2,500 | Published | 2026-11-02 |
 | 1.10 | Can a new website show up in ChatGPT? | can a new website show up in chatgpt | RS Answer | 1,000 | Published | 2026-10-26 |
 
 ## 2 · Get Cited
@@ -50,7 +50,7 @@ The category closest to the audit offer: getting cited or recommended by ChatGPT
 | # | Post | Target keyword | Style | Words | Status | Draft / notes |
 | --- | --- | --- | --- | --- | --- | --- |
 | 2.1 ★ | How to get cited by ChatGPT: the playbook (2026) | how to get cited by chatgpt | RS Playbook | 2,500 | Published | Draft `content/blog/how-to-get-cited-by-chatgpt.ts` · Harshi Rathi · 25 Oct 2026 |
-| 2.2 | How to rank in ChatGPT, and why "rank" is the wrong word | how to rank in chatgpt | RS Answer | 1,200 | Idea |  |
+| 2.2 | How to rank in ChatGPT, and why "rank" is the wrong word | how to rank in chatgpt | RS Answer | 1,200 | Published | 2026-11-02 |
 | 2.3 | How to get ChatGPT to recommend your business (SaaS and consumer brands) | how to get chatgpt to recommend my business | RS Playbook | 2,000 | Published | 2026-10-29 |
 | 2.4 ★ | Why ChatGPT recommends your competitor instead of you | why chatgpt recommends my competitor | Data post | 1,500 | Published | Draft `content/blog/why-chatgpt-recommends-your-competitor.ts` · Harshi Rathi · 25 Oct 2026 |
 | 2.5 | How to get cited in Google AI Overviews | how to get cited in google ai overviews | RS Playbook | 2,000 | Published | 2026-10-27 |
@@ -74,7 +74,7 @@ The most winnable category for a new site. Lead with what blocks AI crawlers, an
 | 3.6 | Does schema help AI citations? What 158,000 answers show | does schema help ai citations | Data post | 1,500 | Published | 2026-10-29 |
 | 3.7 | Cloudflare's AI bot settings: check you are not blocking Googlebot | cloudflare block ai bots | RS Answer | 900 | Published | 2026-10-29 |
 | 3.8 | Bing Webmaster Tools and IndexNow in 10 minutes | bing webmaster tools ai performance | RS Answer | 1,200 | Published | 2026-10-27 |
-| 3.9 | llms.txt vs robots.txt: what each one does | llms.txt vs robots.txt | RS Answer | 800 | Idea |  |
+| 3.9 | llms.txt vs robots.txt: what each one does | llms.txt vs robots.txt | RS Answer | 800 | Published | 2026-11-02 |
 | 3.10 | How to structure a blog post so Google and AI can use it | how to write content for ai search | RS Playbook | 1,800 | Published | 2026-10-29 |
 
 ## 4 · Reddit Marketing
@@ -84,7 +84,7 @@ The product category. This is where client screenshots and first-hand examples s
 | # | Post | Target keyword | Style | Words | Status | Draft / notes |
 | --- | --- | --- | --- | --- | --- | --- |
 | 4.1 ★ | Reddit marketing for SaaS: the complete playbook (2026) | reddit marketing for saas | RS Playbook | 2,500 | Published | 2026-10-26 |
-| 4.2 | Reddit SEO: threads that rank in Google and get cited by AI | reddit seo | RS Playbook | 2,500 | Idea |  |
+| 4.2 | Reddit SEO: threads that rank in Google and get cited by AI | reddit seo | RS Playbook | 2,500 | Published | 2026-11-02 |
 | 4.3 ★ | How to warm up a new Reddit account: a 30-day plan | how to warm up a reddit account | RS Playbook | 1,800 | Published | Draft `content/blog/how-to-warm-up-a-reddit-account.ts` · Vijay Singh · 25 Oct 2026 |
 | 4.4 ★ | Why was my Reddit post removed? 10 causes and how to tell which | why was my reddit post removed | RS Answer | 1,200 | Published | Draft `content/blog/why-was-my-reddit-post-removed.ts` · Vijay Singh · 25 Oct 2026 |
 | 4.5 | Reddit self-promotion rules: what Reddit bans vs what subreddits ban | reddit self promotion rules | RS Answer | 1,200 | Published | 2026-10-26 |
@@ -135,12 +135,12 @@ Read right before a call. Agency-name searches ("reddit marketing agency", "geo 
 | # | Post | Target keyword | Style | Words | Status | Draft / notes |
 | --- | --- | --- | --- | --- | --- | --- |
 | 7.1 ★ | How much does Reddit marketing cost? Agency pricing explained | reddit marketing agency cost | RS Answer | 1,500 | Published | Draft `content/blog/reddit-marketing-agency-cost.ts` · Harshi Rathi · 25 Oct 2026 |
-| 7.2 | How much does AI SEO cost in 2026? | how much does ai seo cost | RS Answer | 1,500 | Idea |  |
-| 7.3 | How to choose a Reddit marketing agency: 12 questions to ask | best reddit marketing agency | RS Playbook | 1,800 | Idea |  |
+| 7.2 | How much does AI SEO cost in 2026? | how much does ai seo cost | RS Answer | 1,500 | Published | 2026-11-02 |
+| 7.3 | How to choose a Reddit marketing agency: 12 questions to ask | best reddit marketing agency | RS Playbook | 1,800 | Published | 2026-11-02 |
 | 7.4 | How to choose an AI SEO agency: 12 questions to ask | ai seo agency | RS Playbook | 1,800 | Published | 2026-10-27 |
 | 7.5 | Reddit marketing agency vs an in-house team | reddit marketing agency vs in-house | RS Answer | 1,200 | Published | 2026-10-26 |
-| 7.6 | Best AI visibility tracking tools (2026), compared | best ai visibility tools | Comparison | 3,500 | Idea |  |
-| 7.7 | Profound vs Peec AI | profound vs peec ai | Comparison | 1,500 | Idea |  |
-| 7.8 | Reddit marketing or SEO first? A guide for startups | reddit marketing vs seo for startups | RS Answer | 1,200 | Idea |  |
+| 7.6 | Best AI visibility tracking tools (2026), compared | best ai visibility tools | Comparison | 3,500 | Published | 2026-11-02 |
+| 7.7 | Profound vs Peec AI | profound vs peec ai | Comparison | 1,500 | Published | 2026-11-02 |
+| 7.8 | Reddit marketing or SEO first? A guide for startups | reddit marketing vs seo for startups | RS Answer | 1,200 | Published | 2026-11-02 |
 | 7.9 | What a monthly AI visibility report should include | ai visibility report | RS Answer | 1,200 | Published | 2026-10-29 |
-| 7.10 | Free AI visibility audit: what we check and what you get | ai visibility audit | RS Answer | 1,000 | Idea | Doubles as the audit landing page |
+| 7.10 | Free AI visibility audit: what we check and what you get | ai visibility audit | RS Answer | 1,000 | Published | 2026-11-02 · Written as a DIY audit guide, not the audit landing page |
