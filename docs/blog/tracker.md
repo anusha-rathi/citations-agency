@@ -93,6 +93,7 @@ The product category. This is where client screenshots and first-hand examples s
 | 4.8 | How to find the subreddits your buyers, and AI, already use | how to find subreddits for your business | RS Playbook | 1,500 | Published | 2026-10-27 |
 | 4.9 | Commenting on Reddit threads that already rank in Google | how to find reddit threads ranking on google | RS Answer | 1,200 | Published | 2026-10-29 |
 | 4.10 | Brand account, founder account or employees: who should post on Reddit | reddit brand account vs personal account | RS Answer | 1,200 | Published | 2026-10-26 |
+| 4.11 | Reddit traffic decline: Google reads Reddit but sends fewer people | reddit traffic decline | Data post | 2,200 | Published | 2026-11-02 |
 
 ## 5 · Research & Teardowns
 

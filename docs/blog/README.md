@@ -54,6 +54,8 @@ never wording.
 (a screenshot, number or example we own), `updated` date, one CTA tied to the Free AI
 Visibility Audit (mid-article mention plus the end box).
 
+**O4b. Put ourselves in the post (Anusha, 2 Nov 2026).** Beyond the mid-article CTA, add a short "what we do at Citations" block right after the sections readers care about most (a to-do list, what to measure, how removals get handled): what we do on that exact topic, then a link to book a call (`/call`) to go through their free AI visibility audit. Say what we actually do, with no invented results. Use a `callout` with `tone: "short"` and a title.
+
 **O5. Our first-party proof** is what separates us from tool vendors: client
 screenshots (anonymised), Bing AI Performance and Search Console data, Reddit threads we
 have worked on. Every post names its first-party element in the research file before
