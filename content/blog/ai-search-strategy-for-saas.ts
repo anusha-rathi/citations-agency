@@ -181,7 +181,7 @@ export const post: Post = {
     {"t": "table", "head": ["Rhythm", "What to do", "Time"], "rows": [["Weekly", "Answer community threads, and publish or update one page where you can", "3–5 hours"], ["Monthly", "Re-run your prompts, review sources and errors, set next month’s fixes", "2–3 hours"], ["Quarterly", "Refresh your prompt list, comparison pages and pricing facts", "1 day"], ["At each launch", "Update product, pricing and integration pages on launch day", "1–2 hours"], ["After each model or product change", "Spot-check your top ten prompts", "30 minutes"]]},
     {"t": "p", "c": "Keep comparison pages especially current. Competitors change prices and features, and an out-of-date claim on your site is an easy way to lose a reader’s trust. Add a visible last-updated date, and assign someone to check each page once a quarter."},
     {"t": "p", "c": "If you can only do one thing this quarter, fix your pricing and top comparison pages. Those are the questions buyers ask right before choosing, the facts AI tools most often repeat, and the pages your sales team can reuse on calls. Everything else in this plan builds on them."},
-    {"t": "p", "c": "Put one name beside each of those pages this week, along with a date for finishing it, and review progress every Friday."},
+    {"t": "p", "c": "Put one name beside each of those pages this week, along with a date for finishing it, and review your progress together every Friday."},
     {
       t: "callout",
       tone: "dont",
