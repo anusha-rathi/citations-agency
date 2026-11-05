@@ -10,6 +10,7 @@
     "check:posts": "tsx scripts/check-posts.ts"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "lucide-react": "^1.55.0",
     "motion": "^14.1.0",
     "next": "^16.4.3",
