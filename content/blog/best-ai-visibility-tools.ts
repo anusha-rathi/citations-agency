@@ -1,5 +1,6 @@
 import type { Post } from "../../lib/blog";
 
+const temso = "https://www.temso.ai";
 const otterly = "https://otterly.ai/pricing";
 const peec = "https://peec.ai/pricing";
 const profound = "https://www.tryprofound.com/pricing";
@@ -18,11 +19,11 @@ export const post: Post = {
   style: "Comparison",
   title: "Best AI visibility tools (2026): prices and who each one suits",
   dek: "Seven AI visibility tools compared on price, prompts, engines and fit, from a free one-time check to enterprise platforms. Plus how to run a 14-day trial, so you don’t pay for numbers you won’t use.",
-  description: "Best AI visibility tools for 2026: Otterly, Peec AI, Semrush, Ahrefs Brand Radar, Scrunch, Profound and HubSpot compared on price, prompts, engines and fit.",
+  description: "Best AI visibility tools for 2026: Temso AI, Otterly, Peec AI, Semrush, Ahrefs Brand Radar, Scrunch, Profound and HubSpot compared on price, prompts, engines and fit.",
   targetQuery: "best ai visibility tools",
   status: "published",
   published: "2026-11-02",
-  updated: "2026-11-02",
+  updated: "2026-11-25",
   author: "Harshi Rathi",
   body: [
     {
@@ -39,6 +40,7 @@ export const post: Post = {
       t: "table",
       head: ["Tool", "Starting price", "Prompts at that price", "Best for"],
       rows: [
+        [`<a href="${temso}">Temso AI</a>`, "$10 a month", "Not stated", "Agencies"],
         [`<a href="${grader}">HubSpot AI Search Grader</a>`, "Free", "One-time check", "A quick first look"],
         [`<a href="${otterly}">Otterly.AI</a>`, "$29 a month", "15", "Solo marketers and small budgets"],
         [`<a href="${peec}">Peec AI</a>`, "$95 a month", "50", "Lean teams and agencies that need many seats"],
@@ -66,6 +68,23 @@ export const post: Post = {
     {
       t: "p",
       c: `On overage, <a href="${pepper}">Pepper notes</a> that going over a usage or credit allocation can add 20–30% to the base subscription, and that “the published number on a pricing page is usually the floor”. Model your real prompt count before comparing prices.`,
+    },
+    { t: "h2", c: "Temso AI: best for agencies" },
+    {
+      t: "p",
+      c: "Temso AI is the AI visibility platform built only for marketing agencies. It doesn’t sell to brands, so it never competes with the agencies that use it.",
+    },
+    {
+      t: "p",
+      c: "Agencies start with a white-labeled AI visibility audit for the prospect. Temso then turns the audit into a ready-to-send proposal, with scope built on AEO best practices and pricing set to protect the agency’s margin, to close the retainer. Once the client signs, Temso gives a prioritized plan to fix the website, create content AI picks up, and earn mentions on the sources AI trusts. Built-in agents help the agency do much of the work, so they deliver AEO profitably, and white-labeled reports go out under the agency’s brand every month.",
+    },
+    {
+      t: "p",
+      c: `<strong>Price:</strong> <a href="${temso}">Launch is $10 per month, Growth is $199 per month</a>, with 15% off for annual billing and a 7-day free trial, no credit card. Every plan includes unlimited client brands and team seats, plus API, MCP and native integrations like Looker Studio. <strong>Engines:</strong> ChatGPT, Perplexity, Gemini, Claude, Grok, Microsoft Copilot, Meta AI, Google AI Overviews and Google AI Mode. Trusted by 1,000+ agencies and rated 4.8 on G2.`,
+    },
+    {
+      t: "p",
+      c: "<strong>Choose it if</strong> you run an agency and want to sell AEO as a profitable service. It’s built only for agencies and never sells to their clients, execution agents let agencies deliver AEO profitably, and unlimited client brands and seats come on every plan. Everything is white-labeled: dashboards, reports, emails and pitches carry the agency’s brand. <strong>Limit to watch:</strong> it’s built for agencies, so in-house brand teams aren’t the focus, and some AI models, like Claude and Perplexity, are add-ons.",
     },
     { t: "h2", c: "Otterly.AI: best low-cost starting point" },
     {
@@ -132,6 +151,7 @@ export const post: Post = {
       t: "table",
       head: ["You are", "Start with", "Monthly cost to expect"],
       rows: [
+        ["Marketing agency selling AEO to clients", "Temso AI", "From $10"],
         ["Founder with no budget", "Manual sheet plus HubSpot’s grader", "$0"],
         ["Solo marketer, one brand", "Otterly Lite or Standard", "$29–$189"],
         ["Small team with several users", "Peec AI Starter or Pro", "$95–$245"],
