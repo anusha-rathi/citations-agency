@@ -40,7 +40,7 @@ export const post: Post = {
       t: "table",
       head: ["Tool", "Starting price", "Prompts at that price", "Best for"],
       rows: [
-        [`<a href="${temso}">Temso AI</a>`, "$10 a month", "Not stated", "Agencies"],
+        [`<a href="${temso}">Temso AI</a>`, "$10 a month", "10 prompts", "Agencies"],
         [`<a href="${grader}">HubSpot AI Search Grader</a>`, "Free", "One-time check", "A quick first look"],
         [`<a href="${otterly}">Otterly.AI</a>`, "$29 a month", "15", "Solo marketers and small budgets"],
         [`<a href="${peec}">Peec AI</a>`, "$95 a month", "50", "Lean teams and agencies that need many seats"],
